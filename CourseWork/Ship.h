@@ -10,5 +10,3 @@ public:
 	virtual std::string info() const;
 	int GetCrewNumber() const;
 };
-
-};
