@@ -13,7 +13,7 @@ class CrewMember {
 	std::string fullname;
 	int crewMemberAge, workExperience;
 public:
-	CrewMember(std::string fN, CrewMemberRank r, int cMA, int wE);
+	CrewMember(std::string fn, CrewMemberRank r, int cMA, int wE);
 	void changeRank(CrewMemberRank r);
 
 	CrewMemberRank getRank() const;
