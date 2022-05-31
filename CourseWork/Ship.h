@@ -7,6 +7,6 @@ class Ship {
 	int crewNumber;
 public:
 	Ship(double eP, double d, std::string sN, std::string hP, int cN);
-	virtual std::string Info() const;
+	virtual std::string info() const;
 	int GetCrewNumber() const;
 };
