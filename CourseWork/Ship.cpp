@@ -1,7 +1,7 @@
 #include "Ship.h"
 #include <stdexcept>
 
-Ship::Ship(double eP, double d, std::string sN, std::string hP, int cN, CrewMember *m) {
+Ship::Ship(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> m) {
 	if (eP < 0) throw std::invalid_argument("Incorrect engine power");
 	if (d < 0) throw std::invalid_argument("Incorrect displacement");
 	if (cN < 0) throw std::invalid_argument("Incorrect crew number");

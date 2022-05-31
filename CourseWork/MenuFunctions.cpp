@@ -16,7 +16,7 @@ Ship makeShip() {
 	int crewNumber;
 	std::cout << "Enter number of crew members: ";
 	std::cin >> crewNumber;
-	const auto members = new CrewMember[crewNumber];
+	std::vector<CrewMember> members;
 	for (int i = 0; i < crewNumber; i++) {
 		std::string fullname;
 		std::cout << "Enter fullname of crew member: ";
@@ -39,7 +39,6 @@ Ship makeShip() {
 			std::cin >> rankNumber;
 		}
 		rank = static_cast<CrewMemberRank>(rankNumber);
-
 		members[i] = CrewMember(fullname, rank, memberAge, workExp);
 	}
 	return Ship(enginePower, displacement, shipName, homePort, crewNumber, members);
