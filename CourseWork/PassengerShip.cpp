@@ -1,7 +1,7 @@
 #include "PassengerShip.h"
 #include <stdexcept>
 
-PassengerShip::PassengerShip(double eP, double d, std::string sN, std::string hP, int cN, int nOP, int nOB, int bC)  : Ship(eP, d, sN, hP, cN) {
+PassengerShip::PassengerShip(double eP, double d, std::string sN, std::string hP, int cN, CrewMember m, int nOP, int nOB, int bC)  : Ship(eP, d, sN, hP, cN, m) {
 	if (nOP < 0) throw std::invalid_argument("Passengers must be > 0");
 	if (nOB < 0) throw std::invalid_argument("Boats must be > 0");
 	if (bC < 0) throw std::invalid_argument("Boats capacity must be > 0");
