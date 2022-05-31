@@ -3,7 +3,7 @@
 class PassengerShip : public Ship {
 	int numberOfPassengers, numberOfBoats, boatCapacity;
 public:
-	PassengerShip(double eP, double d, std::string sN, std::string hP, int cN, CrewMember m, int nOP, int nOB, int bC);
+	PassengerShip(double eP, double d, std::string sN, std::string hP, int cN, CrewMember *m, int nOP, int nOB, int bC);
 	bool isEnoughBoats() const;
 	int increaseBoats();
 	std::string infoShip() const override;

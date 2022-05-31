@@ -31,9 +31,10 @@ Ship makeShip() {
 		int rankNumber;
 		std::cout << std::endl;
 		std::cout << "Rank: " << std::endl;
-		std::cout << "0) Master;" << "\n" << "1) ChiefEngineer;" << "\n" << "2) Sailor;" << "\n" << "3) Cook;" << std::endl;
+		std::cout << "0) Master;" << "\n" << "1) ChiefEngineer;" << "\n" << "2) Sailor;" << "\n" << "3) Cook;" << "\n" << "4) Doctor"
+			<< std::endl;
 		std::cin >> rankNumber;
-		if (rankNumber < 0 or rankNumber > 3) {
+		if (rankNumber < 0 or rankNumber > 4) {
 			std::cout << "No such number, please, try again: ";
 			std::cin >> rankNumber;
 		}
@@ -41,6 +42,6 @@ Ship makeShip() {
 
 		members[i] = CrewMember(fullname, rank, memberAge, workExp);
 	}
-	return Ship(enginePower, displacement, shipName, homePort, crewNumber, *members);
+	return Ship(enginePower, displacement, shipName, homePort, crewNumber, members);
 
 }
