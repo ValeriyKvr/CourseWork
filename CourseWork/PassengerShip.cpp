@@ -9,17 +9,17 @@ PassengerShip::PassengerShip(double eP, double d, std::string sN, std::string hP
 }
 
 bool PassengerShip::isEnoughBoats() const {
-	if ((GetCrewNumber() + numberOfPassengers) >= numberOfBoats * boatCapacity) return false;
+	if ((getCrewNumber() + numberOfPassengers) >= numberOfBoats * boatCapacity) return false;
 	return true;
 }
 
 int PassengerShip::increaseBoats() {
 	if (isEnoughBoats()) return int("Boats are enough");
-	return numberOfBoats += (GetCrewNumber() + numberOfPassengers) - (numberOfBoats * boatCapacity) / boatCapacity;
+	return numberOfBoats += (getCrewNumber() + numberOfPassengers) - (numberOfBoats * boatCapacity) / boatCapacity;
 
 }
 
-std::string PassengerShip::info() const {
-	return (Ship::info() + "Number of passengers: " + std::to_string(numberOfPassengers) + '\n' + "Numbers 0f boats: " +
+std::string PassengerShip::infoShip() const {
+	return (Ship::infoShip() + "Number of passengers: " + std::to_string(numberOfPassengers) + '\n' + "Numbers 0f boats: " +
 		std::to_string(numberOfBoats) + '\n' + "Boats capacity: " + std::to_string(boatCapacity) + '\n');
 }

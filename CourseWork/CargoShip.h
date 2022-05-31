@@ -4,6 +4,6 @@ class CargoShip : public Ship {
 	double loadCapacity;
 public:
 	CargoShip(double eP, double d, std::string sN, std::string hP, int cN, double lC);
-	std::string info() const override;
+	std::string infoShip() const override;
 };
 

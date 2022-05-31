@@ -8,9 +8,9 @@ Ship::Ship(double eP, double d, std::string sN, std::string hP, int cN) {
 	enginePower = eP, displacement = d, shipName = sN, homePort = hP, crewNumber = cN;
 }
 
-int Ship::GetCrewNumber() const { return crewNumber; }
+int Ship::getCrewNumber() const { return crewNumber; }
 
-std::string Ship::info() const {
+std::string Ship::infoShip() const {
 	return ("Engine power is: " + std::to_string(enginePower) + '\n' + "Displacemnt is: " + std::to_string(displacement) + '\n'
 		+ "Ship name is: " + shipName + '\n' + "Homeport is: " + homePort + '\n' + "Crew number is: " + std::to_string(crewNumber));
 }

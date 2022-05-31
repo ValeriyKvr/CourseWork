@@ -13,6 +13,7 @@ class CrewMember {
 	std::string fullname;
 	int crewMemberAge, workExperience;
 public:
+	CrewMember() {};
 	CrewMember(std::string fn, CrewMemberRank r, int cMA, int wE);
 	void changeRank(CrewMemberRank r);
 
