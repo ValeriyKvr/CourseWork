@@ -1,6 +1,6 @@
 #include "MenuFunctions.h"
 
-Ship makeShip() {
+Ship createShip() {
 	double enginePower;
 	std::cout << "Enter engine power: ";
 	std::cin >> enginePower;
@@ -9,18 +9,21 @@ Ship makeShip() {
 	std::cin >> displacement;
 	std::string shipName;
 	std::cout << "Enter ship name: ";
-	std::getline(std::cin, shipName);
-	std::string homePort;
-	std::cout << "Enter home port: ";
-	std::getline(std::cin, homePort);
+	std::cin >> shipName;
 	int crewNumber;
 	std::cout << "Enter number of crew members: ";
 	std::cin >> crewNumber;
+	std::string homePort;
+	std::cout << "Enter home port: ";
+	std::cin >> homePort;
 	std::vector<CrewMember> members;
 	for (int i = 0; i < crewNumber; i++) {
-		std::string fullname;
-		std::cout << "Enter fullname of crew member: ";
-		std::getline(std::cin, fullname);
+		std::string name, surname, fullname;
+		std::cout << "Enter name of crew member " + std::to_string(i) + ": ";
+		std::cin >> name;
+		std::cout << "Enter surname of crew member: ";
+		std::cin >> surname;
+		fullname = name + " " + surname;
 		int memberAge;
 		std::cout << "Enter " << fullname << " age: ";
 		std::cin >> memberAge;
@@ -31,15 +34,15 @@ Ship makeShip() {
 		int rankNumber;
 		std::cout << std::endl;
 		std::cout << "Rank: " << std::endl;
-		std::cout << "0) Master;" << "\n" << "1) ChiefEngineer;" << "\n" << "2) Sailor;" << "\n" << "3) Cook;" << "\n" << "4) Doctor"
-			<< std::endl;
+		std::cout << "0) Master;" << "\n" << "1) Master Assistant;" << "\n" << "2) ChiefEngineer;" << "\n"  << "3) Engineer Assistant;" 
+			<< "\n" << "4) Sailor;" << "\n" << "5) Cook; " << "\n" << "6) Doctor" << std::endl;
 		std::cin >> rankNumber;
-		if (rankNumber < 0 or rankNumber > 4) {
+		if (rankNumber < 0 or rankNumber > 6) {
 			std::cout << "No such number, please, try again: ";
 			std::cin >> rankNumber;
 		}
-		rank = static_cast<CrewMemberRank>(rankNumber);
-		members[i] = CrewMember(fullname, rank, memberAge, workExp);
+		rank = CrewMemberRank(rankNumber);
+		members.push_back(CrewMember(fullname, rank, memberAge, workExp));
 	}
 	return Ship(enginePower, displacement, shipName, homePort, crewNumber, members);
 
