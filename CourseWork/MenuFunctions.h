@@ -8,5 +8,7 @@
 #include <vector>
 
 Ship createShip();
+PassengerShip createPassengerShip();
+CargoShip createCargoShip();
 
 void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* passengerShip, std::vector<CargoShip>* cargoShip);

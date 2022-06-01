@@ -20,6 +20,6 @@ int PassengerShip::increaseBoats() {
 }
 
 std::string PassengerShip::infoShip() const {
-	return (Ship::infoShip() + "/n" + "Number of passengers: " + std::to_string(numberOfPassengers) + '\n' + "Numbers 0f boats: " +
+	return (Ship::infoShip() + "Number of passengers: " + std::to_string(numberOfPassengers) + '\n' + "Numbers 0f boats: " +
 		std::to_string(numberOfBoats) + '\n' + "Boats capacity: " + std::to_string(boatCapacity) + '\n');
 }
