@@ -41,9 +41,20 @@ Ship createShip() {
 			std::cout << "No such number, please, try again: ";
 			std::cin >> rankNumber;
 		}
-		rank = CrewMemberRank(rankNumber);
+		rank = static_cast<CrewMemberRank>(rankNumber);
 		members.push_back(CrewMember(fullname, rank, memberAge, workExp));
 	}
 	return Ship(enginePower, displacement, shipName, homePort, crewNumber, members);
+}
 
+void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* passengerShip, std::vector<CargoShip>* cargoShip) {
+	int i = 0;
+	if (ship == NULL || !ship->size()) std::cout << "Ordinary ships missing." << std::endl;
+	else {
+		std::cout << "Ordinary ships: " << std::endl;
+		for (auto c : *ship) {
+			std::cout << "Ship's number: " << i << std::endl;
+			std::cout << c.infoShip() << std::endl;
+		}
+	}
 }

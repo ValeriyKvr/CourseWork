@@ -2,7 +2,7 @@
 #include <stdexcept>
 
 CrewMember::CrewMember(std::string fn, CrewMemberRank r, int cMA, int wE) {
-	if (crewMemberAge < 18) throw std::invalid_argument("Crew member's age must be > 0");
+	if (crewMemberAge < 18) throw std::invalid_argument("Crew member's age must be >= 18");
 	if (workExperience < 0) throw std::invalid_argument("Work experience cannot be < 0");
 	fullname = fn, rank = r, crewMemberAge = cMA, workExperience = wE;
 }
