@@ -49,6 +49,7 @@ std::string Ship::infoShip() const {
 				break;
 		}
 	}
+	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	return info;
 }
 

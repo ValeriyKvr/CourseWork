@@ -44,6 +44,7 @@ Ship createShip() {
 		rank = CrewMemberRank(rankNumber);
 		members.push_back(CrewMember(fullname, rank, memberAge, workExp));
 	}
+	std::cout << "Ordinary ship was created. Thank you." << std::endl;
 	return Ship(enginePower, displacement, shipName, homePort, crewNumber, members);
 }
 
@@ -98,6 +99,7 @@ PassengerShip createPassengerShip() {
 	std::cin >> numberOfBoats;
 	std::cout << "Enter boats capacity: ";
 	std::cin >> boatCapacity;
+	std::cout << "Passenger ship was created. Thank you." << std::endl;
 	return PassengerShip(enginePower, displacement, shipName, homePort, crewNumber, members, numberOfPassengers, numberOfBoats, boatCapacity);
 }
 
@@ -148,6 +150,7 @@ CargoShip createCargoShip() {
 	double loadCapacity;
 	std::cout << "Enter load capacity: ";
 	std::cin >> loadCapacity;
+	std::cout << "Cargo ship was created. Thank you." << std::endl;
 	return CargoShip(enginePower, displacement, shipName, homePort, crewNumber, members, loadCapacity);
 }
 
@@ -157,7 +160,7 @@ void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* pasShip, std
 	else {
 		std::cout << "Ordinary ships: " << std::endl;
 		for (auto c : *ship) {
-			std::cout << "Ship's number: " << i + 1 << std::endl;
+			std::cout << "Ship's number: " << ++i << std::endl;
 			std::cout << c.infoShip() << std::endl;
 		}
 	}
@@ -166,7 +169,7 @@ void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* pasShip, std
 	else {
 		std::cout << "Passenger ships: " << std::endl;
 		for (auto c : *pasShip) {
-			std::cout << "Passenger ship's number: " << i + 1 << std::endl;
+			std::cout << "Passenger ship's number: " << ++i << std::endl;
 			std::cout << c.infoShip() << std::endl;
 		}
 	}
@@ -175,7 +178,7 @@ void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* pasShip, std
 	else {
 		std::cout << "Cargo ships: " << std::endl;
 		for (auto c : *cargoShip) {
-			std::cout << "Cargo ship's number: " << i << std::endl;
+			std::cout << "Cargo ship's number: " << ++i << std::endl;
 			std::cout << c.infoShip() << std::endl;
 		}
 	}
