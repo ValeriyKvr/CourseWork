@@ -6,6 +6,7 @@ int main() {
 	std::vector<PassengerShip> passengerShip;
 	std::vector<CargoShip> cargoShip;
 	int menuButton = 1;
+	std::cout << "Hello in my shipcreator!" << std::endl;
 	while (menuButton) {
 		std::cout << "/////////////////////////////" << std::endl;
 		std::cout << "Choose number: " << std::endl;
