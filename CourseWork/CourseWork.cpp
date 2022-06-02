@@ -12,7 +12,8 @@ int main() {
 		std::cout << "\t1) Create ship. " << std::endl;
 		std::cout << "\t2) Show ships." << std::endl;
 		std::cout << "\t3) Check Master." << std::endl;
-		std::cout << "\t4) Exit." << std::endl;
+		std::cout << "\t4) Delete ship." << std::endl;
+		std::cout << "\t5) Exit." << std::endl;
 		std::cin >> menuButton;
 		std::cout << std::endl;
 		switch (menuButton) {
@@ -85,6 +86,37 @@ int main() {
 				break;
 			}
 			case 4: {
+				if (ship.size() + passengerShip.size() + cargoShip.size() == 0) {
+					std::cout << "No ships to delete." << std::endl;
+					break;
+				}
+				int typeOfShip;
+				std::cout << "What type of ship do you want to delete?" << std::endl;
+				std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
+				std::cin >> typeOfShip;
+				if (typeOfShip == 1 and ship.size() != 0) {
+					ship.pop_back();
+					std::cout << "_________Ordinary ship was deleted._________" << std::endl;
+					break;
+				}
+				if (ship.size() == 0) std::cout << "All ordinary ships are deleted or not created." << std::endl;
+
+				if (typeOfShip == 2 and passengerShip.size() != 0) {
+					passengerShip.pop_back();
+					std::cout << "_________Passenger ship was deleted._________" << std::endl;
+					break;
+				}
+				if (passengerShip.size() == 0) std::cout << "All passenger ships are deleted or not created." << std::endl;
+				
+				if (typeOfShip == 3 and cargoShip.size() != 0) {
+					cargoShip.pop_back();
+					std::cout << "_________Cargo ship was deleted._________" << std::endl;
+					break;
+				}
+				if (cargoShip.size() == 0) std::cout << "All cargo ships are deleted or not created." << std::endl;
+				break;
+			}
+			case 5: {
 				menuButton = 0;
 				std::cout << "Thank you. Goodbye!" << std::endl;
 				break;
