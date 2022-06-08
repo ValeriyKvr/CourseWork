@@ -1,4 +1,4 @@
-#include "Ship.h"
+#include "SimpleShip.h"
 #include <iostream>
 #include <stdexcept>
 

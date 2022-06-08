@@ -44,7 +44,6 @@ Ship createShip() {
 		rank = CrewMemberRank(rankNumber - 1);
 		members.push_back(CrewMember(fullname, rank, memberAge, workExp));
 	}
-
 	std::cout << "Ordinary ship was created. Thank you." << std::endl;
 	return Ship(enginePower, displacement, shipName, homePort, crewNumber, members);
 }

@@ -17,21 +17,21 @@
   <Class Name="PassengerShip" Collapsed="true">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DAAEAAAiAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>DAAEAAAiAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAI=</HashCode>
       <FileName>PassengerShip.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ship" Collapsed="true">
     <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAQAAAAQAAAAAAQgAASAACBAASAIAAAAAAIIAA=</HashCode>
-      <FileName>Ship.h</FileName>
+      <HashCode>AAAEAAAAAAAAQAAAAAAQgAACAACBAAQAAAAAAAAIIAA=</HashCode>
+      <FileName>SimpleShip.h</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="CrewMemberRank" Collapsed="true">
     <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAACAAAAAwAAAAAAAAAQAAAACAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAACAAQQAwAAAAAAAAAQAAAACAAAAAAA=</HashCode>
       <FileName>CrewMember.h</FileName>
     </TypeIdentifier>
   </Enum>

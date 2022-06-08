@@ -18,7 +18,7 @@
     <ClCompile Include="CourseWork.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Ship.cpp">
+    <ClCompile Include="SimpleShip.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="CargoShip.cpp">
@@ -35,7 +35,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ship.h">
+    <ClInclude Include="SimpleShip.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="CargoShip.h">

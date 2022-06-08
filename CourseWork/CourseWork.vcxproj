@@ -144,14 +144,14 @@
     <ClCompile Include="CrewMember.cpp" />
     <ClCompile Include="MenuFunctions.cpp" />
     <ClCompile Include="PassengerShip.cpp" />
-    <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="SimpleShip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CargoShip.h" />
     <ClInclude Include="CrewMember.h" />
     <ClInclude Include="MenuFunctions.h" />
     <ClInclude Include="PassengerShip.h" />
-    <ClInclude Include="Ship.h" />
+    <ClInclude Include="SimpleShip.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

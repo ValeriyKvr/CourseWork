@@ -1,5 +1,5 @@
 #pragma once
-#include "Ship.h"
+#include "SimpleShip.h"
 class CargoShip : public Ship {
 	double loadCapacity;
 public:

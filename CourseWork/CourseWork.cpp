@@ -9,14 +9,15 @@ int main() {
 		int menuButton = 1;
 		std::cout << "\tHello!\n" << "Welcome in my shipcreator!" << std::endl;
 		while (menuButton) {
-			std::cout << "//////////////////////////" << std::endl;
-			std::cout << "Please, choose the number: " << std::endl;
-			std::cout << "1) Create ship. " << std::endl;
+			std::cout << "//////////////////////////////////////////////////" << std::endl;
+			std::cout << "Please, choose the number:" << std::endl;
+			std::cout << "1) Create ship." << std::endl;
 			std::cout << "2) Show ships." << std::endl;
 			std::cout << "3) Check the Master." << std::endl;
 			std::cout << "4) Delete ship." << std::endl;
 			std::cout << "5) Check the number of boats on a passenger ship." << std::endl;
 			std::cout << "6) Exit." << std::endl;
+			std::cout << "//////////////////////////////////////////////////" << std::endl;
 			std::cin >> menuButton;
 			if (menuButton <= 0 or menuButton >= 7) {
 				std::cout << "Incorrect number. Try again." << std::endl;
@@ -154,25 +155,43 @@ int main() {
 						std::cout << "Please, enter number of the ordinary ship, which you want to delete: " << std::endl;
 						int delShipNum;
 						std::cin >> delShipNum;
-						ship.erase(ship.begin() + delShipNum - 1);
-						std::cout << "The ordinary ship number " << delShipNum << " was succesfully deleted." << std::endl;
-						break;
+						if (delShipNum > ship.size()) {
+							std::cout << "Incorrect number." << std::endl;
+							break;
+						}
+						else {
+							ship.erase(ship.begin() + delShipNum - 1);
+							std::cout << "The ordinary ship number " << delShipNum << " was succesfully deleted." << std::endl;
+							break;
+						}
 					}
 					if (typeOfShipToDel == 2 and passengerShip.size() != 0) {
 						std::cout << "Please, enter number of the passenger ship, which you want to delete: " << std::endl;
 						int delShipNum;
 						std::cin >> delShipNum;
-						passengerShip.erase(passengerShip.begin() + delShipNum - 1);
-						std::cout << "The passenger ship number " << delShipNum << " was succesfully deleted." << std::endl;
-						break;
+						if (delShipNum > passengerShip.size()) {
+							std::cout << "Incorrect number." << std::endl;
+							break;
+						}
+						else {
+							passengerShip.erase(passengerShip.begin() + delShipNum - 1);
+							std::cout << "The passenger ship number " << delShipNum << " was succesfully deleted." << std::endl;
+							break;
+						}
 					}
 					if (typeOfShipToDel == 3 and cargoShip.size() != 0) {
 						std::cout << "Please, enter number of the cargo ship, which you want to delete: " << std::endl;
 						int delShipNum;
 						std::cin >> delShipNum;
-						cargoShip.erase(cargoShip.begin() + delShipNum - 1);
-						std::cout << "The cargo ship number " << delShipNum << " was succesfully deleted." << std::endl;
-						break;
+						if (delShipNum > cargoShip.size()) {
+							std::cout << "Incorrect number." << std::endl;
+							break;
+						}
+						else {
+							cargoShip.erase(cargoShip.begin() + delShipNum - 1);
+							std::cout << "The cargo ship number " << delShipNum << " was succesfully deleted." << std::endl;
+							break;
+						}
 					}
 					if (ship.size() == 0) {
 						std::cout << "All ordinary ships are deleted or not created." << std::endl;
@@ -201,19 +220,28 @@ int main() {
 							break;
 						}
 						else {
-							std::cout << "Boats aren't enough at the passenger ship." << std::endl;
+							std::cout << "Boats aren't enough at the passenger ship number " << numCheckBoats - 1 << "." << std::endl;
 							std::cout << "Please, choose the next action: \n" << "1) Increase number of boats.\n" << "2) Save the current amount." << std::endl;
 							int numInc;
 							std::cin >> numInc;
-							if (numInc) {
+							if (numInc == 1) {
 								passengerShip[numCheckBoats - 1].increaseBoats();
-								std::cout << "Number of boats was increase to " << passengerShip[numCheckBoats - 1].getNumOfBoats() << std::endl;
+								std::cout << "Number of boats was increased to " << passengerShip[numCheckBoats - 1].getNumOfBoats() << std::endl;
+								break;
+							}
+							else if (numInc == 2) {
+								std::cout << "No changes." << std::endl;
 								break;
 							}
 							else std::cout << "Incorrect number." << std::endl;
 						}
 						break;
 					}
+					else {
+						std::cout << "Sorry, but you enter incorrect number." << std::endl;
+						break;
+					}
+					break;
 				case 6: 
 					menuButton = 0;
 					std::cout << "Thank you. Goodbye!" << std::endl;
