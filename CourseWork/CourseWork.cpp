@@ -24,7 +24,7 @@ int main() {
 			else {
 				std::cout << std::endl;
 				switch (menuButton) {
-				case 1: {
+				case 1: 
 					int typeOfShip;
 					std::cout << "What type of ship do you want to create?" << std::endl;
 					std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
@@ -45,8 +45,7 @@ int main() {
 						break;
 					}
 					break;
-				}
-				case 2: {
+				case 2: 
 					if (ship.size() + passengerShip.size() + cargoShip.size() == 0) {
 						std::cout << "Ships wasn't created or deleted." << std::endl;
 						break;
@@ -56,41 +55,92 @@ int main() {
 						break;
 					}
 					break;
-				}
-				case 3: {
+				case 3: //Check Master;
 					if (ship.size() + passengerShip.size() + cargoShip.size() == 0) std::cout << "No ships to check the Master." << std::endl;
 					else {
-						for (int i = 0; i < ship.size(); i++) {
-							if (!ship[i].isMasterPresent()) {
-								std::cout << "Master is present at ordinary ship." << std::endl;
-							}
-							else {
-								std::cout << "Master is missing at ordinary ship." << std::endl;
+						int typeOfShip;
+						std::cout << "Choose ship to check the Master." << std::endl;
+						std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
+						std::cin >> typeOfShip;
+						switch (typeOfShip) {//Choose number of ship to check Master;
+						case 1:
+							if (ship.size() == 0) {
+								std::cout << "The ordinary ship wasn't created or deleted." << std::endl;
 								break;
 							}
-						}
-						for (int i = 0; i < passengerShip.size(); i++) {
-							if (!passengerShip[i].isMasterPresent()) {
-								std::cout << "Master is present at passenger ship." << std::endl;
-							}
 							else {
-								std::cout << "Master is missing at passenger ship." << std::endl;
+								std::cout << "Please, enter the number of ordinary ship to check the Master." << std::endl;
+								int numShipToCheck;
+								std::cin >> numShipToCheck;
+								if (numShipToCheck - 1 <= ship.size()) {
+									if (ship[numShipToCheck - 1].isMasterPresent()) {
+										std::cout << "Master is present at ordinary ship." << std::endl;
+										break;
+									}
+									else {
+										std::cout << "Master is missing at ordinary ship number " << numShipToCheck << "." << std::endl;
+										break;
+									}
+									break;
+								}
+								else {
+									std::cout << "The ordinary ship with number " << numShipToCheck << " wasn't created or deleted." << std::endl;
+									break;
+								}
+							}
+						case 2:	
+							if (passengerShip.size() == 0) {
+								std::cout << "The passenger ship wasn't created or deleted." << std::endl;
 								break;
 							}
-						}
-						for (int i = 0; i < cargoShip.size(); i++) {
-							if (!cargoShip[i].isMasterPresent()) {
-								std::cout << "Master is present at cargo ship." << std::endl;
+							else {
+								std::cout << "Please, enter the number of passenger ship to check the Master." << std::endl;
+								int numShipToCheck;
+								std::cin >> numShipToCheck;
+								if (numShipToCheck - 1 <= ship.size()) {
+									if (passengerShip[numShipToCheck - 1].isMasterPresent()) {
+										std::cout << "Master is present at passenger ship." << std::endl;
+										break;
+									}
+									else {
+										std::cout << "Master is missing at passenger ship number " << numShipToCheck << "." << std::endl;
+										break;
+									}
+									break;
+								}
+								else {
+									std::cout << "The passanger ship with number " << numShipToCheck << " wasn't created or deleted." << std::endl;
+									break;
+								}
+							}
+						case 3:
+							if (cargoShip.size() == 0) {
+								std::cout << "The cargo ship wasn't created or deleted." << std::endl;
+								break;
 							}
 							else {
-								std::cout << "Master is missing at cargo ship." << std::endl;
-								break;
+								std::cout << "Please, enter the number of cargo ship to check the Master." << std::endl;
+								int numShipToCheck;
+								std::cin >> numShipToCheck;
+								if (numShipToCheck - 1 <= ship.size()) {
+									if (cargoShip[numShipToCheck - 1].isMasterPresent()) {
+										std::cout << "Master is present at cargo ship." << std::endl;
+										break;
+									}
+									else {
+										std::cout << "Master is missing at cargo ship number " << numShipToCheck << "." << std::endl;
+									}
+									break;
+								}
+								else {
+									std::cout << "The cargo ship with number " << numShipToCheck << " wasn't created or deleted." << std::endl;
+									break;
+								}
 							}
 						}
 					}
 					break;
-				}
-				case 4: {
+				case 4: 
 					if (ship.size() + passengerShip.size() + cargoShip.size() == 0) {
 						std::cout << "No ships to delete." << std::endl;
 						break;
@@ -100,15 +150,13 @@ int main() {
 					std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
 					std::cin >> typeOfShip;
 					if (typeOfShip == 1 and ship.size() != 0) {
-						std::cout << "Please, enter number of the ship, which you want to delete: " << std::endl;
+						std::cout << "Please, enter number of the ordinary ship, which you want to delete: " << std::endl;
 						int delShipNum;
 						std::cin >> delShipNum;
 						ship.erase(ship.begin() + delShipNum - 1);
 						std::cout << "The ordinary ship number " << delShipNum << " was succesfully deleted." << std::endl;
 						break;
 					}
-					if (ship.size() == 0) std::cout << "All ordinary ships are deleted or not created." << std::endl;
-
 					if (typeOfShip == 2 and passengerShip.size() != 0) {
 						std::cout << "Please, enter number of the passenger ship, which you want to delete: " << std::endl;
 						int delShipNum;
@@ -117,11 +165,6 @@ int main() {
 						std::cout << "The passenger ship number " << delShipNum << " was succesfully deleted." << std::endl;
 						break;
 					}
-					if (passengerShip.size() == 0) {
-						std::cout << "All passenger ships are deleted or not created." << std::endl;
-						break;
-					}
-
 					if (typeOfShip == 3 and cargoShip.size() != 0) {
 						std::cout << "Please, enter number of the cargo ship, which you want to delete: " << std::endl;
 						int delShipNum;
@@ -130,17 +173,23 @@ int main() {
 						std::cout << "The cargo ship number " << delShipNum << " was succesfully deleted." << std::endl;
 						break;
 					}
+					if (ship.size() == 0) {
+						std::cout << "All ordinary ships are deleted or not created." << std::endl;
+						break;
+					}
+					if (passengerShip.size() == 0) {
+						std::cout << "All passenger ships are deleted or not created." << std::endl;
+						break;
+					}
 					if (cargoShip.size() == 0) {
 						std::cout << "All cargo ships are deleted or not created." << std::endl;
 						break;
 					}
 					break;
-				}
-				case 5: {
+				case 5: 
 					menuButton = 0;
 					std::cout << "Thank you. Goodbye!" << std::endl;
 					break;
-				}
 				}
 			}
 		}

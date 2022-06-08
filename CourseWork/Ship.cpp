@@ -17,8 +17,8 @@ bool Ship::isMasterPresent() const {
 }
 
 std::string Ship::infoShip() const {
-	std::string info =  ("Engine power is: " + std::to_string(enginePower) + '\n' + "Displacemnt is: " + std::to_string(displacement) + '\n'
-		+ "Ship name is: " + shipName + '\n' + "Homeport is: " + homePort + '\n' + "Crew number is: " + std::to_string(crewNumber) + "\n");
+	std::string info =  ("Engine power is: " + std::to_string(enginePower) + "\n" + "Displacemnt is: " + std::to_string(displacement) + "\n"
+		+ "Ship name is: " + shipName + "\n" + "Homeport is: " + homePort + "\n" + "Crew number is: " + std::to_string(crewNumber) + "\n");
 	for (int i = 0; i < crewNumber; i++) {
 		std::cout << std::endl;
 		info += "\n";
@@ -49,7 +49,6 @@ std::string Ship::infoShip() const {
 				break;
 		}
 	}
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	return info;
 }
 
