@@ -7,5 +7,6 @@ public:
 	bool isEnoughBoats() const;
 	int increaseBoats();
 	std::string infoShip() const override;
+	int getNumOfBoats() const;
 };
 
