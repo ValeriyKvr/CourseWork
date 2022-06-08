@@ -2,11 +2,17 @@
 
 Ship createShip() {
 	double enginePower;
-	std::cout << "Enter engine power: ";
+	std::cout << "Enter engine power in kW: ";
 	std::cin >> enginePower;
+	if (enginePower <= 0) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	double displacement;
-	std::cout << "Enter displacement: ";
+	std::cout << "Enter displacement in tons: ";
 	std::cin >> displacement;
+	if (displacement <= 0) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	std::string shipName;
 	std::cout << "Enter ship name: ";
 	std::cin >> shipName;
@@ -16,6 +22,9 @@ Ship createShip() {
 	int crewNumber;
 	std::cout << "Enter number of crew members: ";
 	std::cin >> crewNumber;
+	if (crewNumber < 0 or crewNumber > 100) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	std::vector<CrewMember> members;
 	for (int i = 0; i < crewNumber; i++) {
 		std::string name, surname, fullname;
@@ -27,14 +36,18 @@ Ship createShip() {
 		int memberAge;
 		std::cout << "Enter " << fullname << " age: ";
 		std::cin >> memberAge;
+		if (memberAge <= 0 or memberAge > 90) {
+			throw std::invalid_argument("Error. Incorrect input.");
+		}
 		int workExp;
-		std::cout << "Enter " << fullname << " work experience: ";
+		std::cout << "Enter " << fullname << " work experience: " << std::endl;;
 		std::cin >> workExp;
+		if (workExp < 0 or workExp > memberAge - 18) {
+			throw std::invalid_argument("Error. Incorrect input.");
+		}
 		CrewMemberRank rank;
 		int rankNumber;
-		std::cout << std::endl;
-		std::cout << "Rank: " << std::endl;
-		std::cout << "1) Master;" << "\n" << "2) Master Assistant;" << "\n" << "3) Chief Engineer;" << "\n"  << "4) Engineer Assistant;" 
+		std::cout << "Rank: " << "1) Master;" << "\n" << "2) Master Assistant;" << "\n" << "3) Chief Engineer;" << "\n"  << "4) Engineer Assistant;" 
 			<< "\n" << "5) Sailor;" << "\n" << "6) Cook; " << "\n" << "7) Doctor" << std::endl;
 		std::cin >> rankNumber;
 		if (rankNumber < 1 or rankNumber > 7) {
@@ -50,11 +63,17 @@ Ship createShip() {
 
 PassengerShip createPassengerShip() {
 	double enginePower;
-	std::cout << "Enter engine power: ";
+	std::cout << "Enter engine power in kW: ";
 	std::cin >> enginePower;
+	if (enginePower <= 0) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	double displacement;
-	std::cout << "Enter displacement: ";
+	std::cout << "Enter displacement in tons: ";
 	std::cin >> displacement;
+	if (displacement <= 0) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	std::string shipName;
 	std::cout << "Enter ship name: ";
 	std::cin >> shipName;
@@ -64,6 +83,9 @@ PassengerShip createPassengerShip() {
 	int crewNumber;
 	std::cout << "Enter number of crew members: ";
 	std::cin >> crewNumber;
+	if (crewNumber < 0 or crewNumber > 100) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	std::vector<CrewMember> members;
 	for (int i = 0; i < crewNumber; i++) {
 		std::string name, surname, fullname;
@@ -106,11 +128,17 @@ PassengerShip createPassengerShip() {
 
 CargoShip createCargoShip() {
 	double enginePower;
-	std::cout << "Enter engine power: ";
+	std::cout << "Enter engine power in kW: ";
 	std::cin >> enginePower;
+	if (enginePower <= 0) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	double displacement;
-	std::cout << "Enter displacement: ";
+	std::cout << "Enter displacement in tons: ";
 	std::cin >> displacement;
+	if (displacement <= 0) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	std::string shipName;
 	std::cout << "Enter ship name: ";
 	std::cin >> shipName;
@@ -120,6 +148,9 @@ CargoShip createCargoShip() {
 	int crewNumber;
 	std::cout << "Enter number of crew members: ";
 	std::cin >> crewNumber;
+	if (crewNumber < 0 or crewNumber > 100) {
+		throw std::invalid_argument("Error. Incorrect input.");
+	}
 	std::vector<CrewMember> members;
 	for (int i = 0; i < crewNumber; i++) {
 		std::string name, surname, fullname;

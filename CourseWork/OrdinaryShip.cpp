@@ -1,4 +1,4 @@
-#include "SimpleShip.h"
+#include "OrdinaryShip.h"
 #include <iostream>
 #include <stdexcept>
 
@@ -17,13 +17,14 @@ bool Ship::isMasterPresent() const {
 }
 
 std::string Ship::infoShip() const {
-	std::string info =  ("Engine power is: " + std::to_string(enginePower) + "\n" + "Displacemnt is: " + std::to_string(displacement) + "\n"
-		+ "Ship name is: " + shipName + "\n" + "Homeport is: " + homePort + "\n" + "Crew number is: " + std::to_string(crewNumber) + "\n");
+	std::string info =  ("Engine power is: " + std::to_string(enginePower) + " kW." + "\n" + "Displacemnt is: " + std::to_string(displacement) + 
+		" tons." + "\n" + "Ship name is: " + shipName + "\n" + "Homeport is: " + homePort + "\n" + "Number of crew members: " + std::to_string(crewNumber) + "\n");
 	for (int i = 0; i < crewNumber; i++) {
 		std::cout << std::endl;
 		info += "\n";
-		info += "Crew member #" + std::to_string(i + 1) + "\n" + "Fullname: " + members[i].getFullname() + "\n" + "Age: " + std::to_string(members[i].getAge()) +
-			"\n" + "Work experience: " + std::to_string(members[i].getWorkExp()) + "\n";
+		info += "Crew member #" + std::to_string(i + 1) + "\n" + "Fullname: " + members[i].getFullname() + "\n" + "Age: " 
+			+ std::to_string(members[i].getAge()) + " years." + "\n" + "Work experience: " + std::to_string(members[i].getWorkExp())
+			+ " years." + "\n";
 		const CrewMemberRank rank = members[i].getRank();
 		switch (rank) {
 			case CrewMemberRank::Master:

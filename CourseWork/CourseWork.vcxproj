@@ -144,17 +144,14 @@
     <ClCompile Include="CrewMember.cpp" />
     <ClCompile Include="MenuFunctions.cpp" />
     <ClCompile Include="PassengerShip.cpp" />
-    <ClCompile Include="SimpleShip.cpp" />
+    <ClCompile Include="OrdinaryShip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CargoShip.h" />
     <ClInclude Include="CrewMember.h" />
     <ClInclude Include="MenuFunctions.h" />
     <ClInclude Include="PassengerShip.h" />
-    <ClInclude Include="SimpleShip.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClInclude Include="OrdinaryShip.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

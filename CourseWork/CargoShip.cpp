@@ -5,5 +5,5 @@ CargoShip::CargoShip(double eP, double d, std::string sN, std::string hP, int cN
 	loadCapacity = lC;
 }
 std::string CargoShip::infoShip() const {
-	return(Ship::infoShip() + "\nLoad capacity: " + std::to_string(loadCapacity));
+	return(Ship::infoShip() + "\nLoad capacity: " + std::to_string(loadCapacity) + " tons." + "\n");
 }

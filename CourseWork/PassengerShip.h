@@ -1,5 +1,5 @@
 #pragma once
-#include "SimpleShip.h"
+#include "OrdinaryShip.h"
 class PassengerShip : public Ship {
 	int numberOfPassengers, numberOfBoats, boatCapacity;
 public:

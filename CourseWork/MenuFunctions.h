@@ -1,5 +1,5 @@
 #pragma once
-#include "SimpleShip.h"
+#include "OrdinaryShip.h"
 #include "PassengerShip.h"
 #include "CargoShip.h"
 #include "CrewMember.h"
