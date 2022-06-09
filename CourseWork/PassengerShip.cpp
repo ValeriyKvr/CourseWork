@@ -27,4 +27,9 @@ std::string PassengerShip::infoShip() const {
 	return (Ship::infoShip() + "Number of passengers: " + std::to_string(numberOfPassengers) + '\n' + "Numbers of boats: " +
 		std::to_string(numberOfBoats) + '\n' + "Boats capacity: " + std::to_string(boatCapacity) + '\n');
 }
+
 int PassengerShip::getNumOfBoats() const { return numberOfBoats; }
+
+void PassengerShip::setNumOfPas(int nOF) { numberOfPassengers = nOF; }
+void PassengerShip::setNumOfBoats(int nOB) { numberOfBoats = nOB; }
+void PassengerShip::setBoatsCap(int bC) { boatCapacity = bC; }

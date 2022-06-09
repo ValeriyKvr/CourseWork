@@ -1,5 +1,6 @@
 ﻿#include "MenuFunctions.h"
 
+
 int main() {
 	try {
 		std::vector<Ship> ordinaryShip;
@@ -15,10 +16,11 @@ int main() {
 			std::cout << "3) Check the Master." << std::endl;
 			std::cout << "4) Delete ship." << std::endl;
 			std::cout << "5) Check the number of boats on a passenger ship." << std::endl;
-			std::cout << "6) Exit." << std::endl;
+			std::cout << "6) Modify ship." << std::endl;
+			std::cout << "7) Exit." << std::endl;
 			std::cout << "//////////////////////////////////////////////////" << std::endl;
 			std::cin >> menuButton;
-			if (menuButton <= 0 or menuButton >= 7) {
+			if (menuButton <= 0 or menuButton >= 8) {
 				std::cout << "Incorrect number. Try again." << std::endl;
 				menuButton = 1;
 			}
@@ -46,6 +48,7 @@ int main() {
 						break;
 					}
 					break;
+/////////////////////////////////////////////////////////////////////////////////////////
 				case 2: 
 					if (ordinaryShip.size() + passengerShip.size() + cargoShip.size() == 0) {
 						std::cout << "Ships wasn't created or deleted." << std::endl;
@@ -56,8 +59,10 @@ int main() {
 						break;
 					}
 					break;
+/////////////////////////////////////////////////////////////////////////////////////////////
 				case 3: //Check Master;
-					if (ordinaryShip.size() + passengerShip.size() + cargoShip.size() == 0) std::cout << "No ships to check the Master." << std::endl;
+					if (ordinaryShip.size() == 0 and passengerShip.size() == 0 and cargoShip.size() == 0) std::cout <<
+						"No ships to check the Master." << std::endl;
 					else {
 						int typeOfShip;
 						std::cout << "Choose ship to check the Master." << std::endl;
@@ -134,15 +139,17 @@ int main() {
 									break;
 								}
 								else {
-									std::cout << "The cargo ship with number " << numShipToCheck << " wasn't created or deleted." << std::endl;
+									std::cout << "The cargo ship with number " << numShipToCheck << " wasn't created or deleted."
+										<< std::endl;
 									break;
 								}
 							}
 						}
 					}
 					break;
+///////////////////////////////////////////////////////////////////////////////////
 				case 4: 
-					if (ordinaryShip.size() + passengerShip.size() + cargoShip.size() == 0) {
+					if (ordinaryShip.size() == 0 and passengerShip.size() == 0 and cargoShip.size() == 0) {
 						std::cout << "No ships to delete." << std::endl;
 						break;
 					}
@@ -192,19 +199,20 @@ int main() {
 							break;
 						}
 					}
-					if (ordinaryShip.size() == 0) {
+					if (ordinaryShip.size() == 0 and typeOfShipToDel == 1) {
 						std::cout << "All ordinary ships are deleted or not created." << std::endl;
 						break;
 					}
-					if (passengerShip.size() == 0) {
+					if (passengerShip.size() == 0 and typeOfShipToDel == 2) {
 						std::cout << "All passenger ships are deleted or not created." << std::endl;
 						break;
 					}
-					if (cargoShip.size() == 0) {
+					if (cargoShip.size() == 0 and typeOfShipToDel == 3) {
 						std::cout << "All cargo ships are deleted or not created." << std::endl;
 						break;
 					}
 					break;
+///////////////////////////////////////////////////////////////////////////////////////////////////
 				case 5:
 					if (passengerShip.size() == 0) {
 						std::cout << "All passenger ships are deleted or not created." << std::endl;
@@ -219,7 +227,7 @@ int main() {
 							break;
 						}
 						else {
-							std::cout << "Boats aren't enough at the passenger ship number " << numCheckBoats - 1 << "." << std::endl;
+							std::cout << "Boats aren't enough at the passenger ship number " << numCheckBoats << "." << std::endl;
 							std::cout << "Please, choose the next action: \n" << "1) Increase number of boats.\n" << "2) Save the current amount." << std::endl;
 							int numInc;
 							std::cin >> numInc;
@@ -241,7 +249,46 @@ int main() {
 						break;
 					}
 					break;
-				case 6: 
+//////////////////////////////////////////////////////////////////////////////
+				case 6:
+					if (ordinaryShip.size() == 0 and passengerShip.size() == 0 and cargoShip.size() == 0) {
+						std::cout << "No ships to modify." << std::endl;
+						break;
+					}
+					std::cout << "What type of ship do you want to modify?" << std::endl;
+					std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
+					int typeOfShipDel;
+					std::cin >> typeOfShipDel;
+					if (typeOfShipDel == 1 and ordinaryShip.size() != 0) {//Modify ordinary ship
+						std::cout << "Enter ship number: " << std::endl;
+						modShip(ordinaryShip);
+						break;
+					}
+					if (ordinaryShip.size() == 0 and typeOfShipDel == 1) {
+						std::cout << "No ordinary ships to modify." << std::endl;
+						break;
+					}
+					if (typeOfShipDel == 2 and passengerShip.size() != 0) {//Modify passenger ship
+						std::cout << "Enter passenger ship number: " << std::endl;
+						modPassengerShip(passengerShip);
+						break;
+					}
+					if (passengerShip.size() == 0 and typeOfShipDel == 2) {
+						std::cout << "No passenger ships to modify." << std::endl;
+						break;
+					}
+					if (typeOfShipDel == 3 and cargoShip.size() != 0) {//Modify cargo ship
+						std::cout << "Enter cargo ship number: " << std::endl;
+						modCargoShip(cargoShip);
+						break;
+					}
+					if (cargoShip.size() == 0 and typeOfShipDel == 3) {
+						std::cout << "No cargo ships to modify." << std::endl;
+						break;
+					}
+					break;
+/////////////////////////////////////////////////////////////////////////////
+				case 7: 
 					menuButton = 0;
 					std::cout << "Thank you. Goodbye!" << std::endl;
 					break;

@@ -17,8 +17,8 @@ bool Ship::isMasterPresent() const {
 }
 
 std::string Ship::infoShip() const {
-	std::string info =  ("Engine power is: " + std::to_string(enginePower) + " kW." + "\n" + "Displacemnt is: " + std::to_string(displacement) + 
-		" tons." + "\n" + "Ship name is: " + shipName + "\n" + "Homeport is: " + homePort + "\n" + "Number of crew members: " + std::to_string(crewNumber) + "\n");
+	std::string info =  ("Engine power: " + std::to_string(enginePower) + " kW" + "\n" + "Displacemnt: " + std::to_string(displacement) + 
+		" tons" + "\n" + "Ship name is: " + shipName + "\n" + "Homeport: " + homePort + "\n" + "Number of crew members: " + std::to_string(crewNumber) + "\n");
 	for (int i = 0; i < crewNumber; i++) {
 		std::cout << std::endl;
 		info += "\n";
@@ -53,4 +53,13 @@ std::string Ship::infoShip() const {
 	return info;
 }
 
+double Ship::getEnginePower() const { return enginePower; }
+double Ship::getDisplacement() const { return displacement; }
+std::string Ship::getShipName() const { return shipName; }
+std::string Ship::getHomePort() const { return homePort; }
 int Ship::getCrewNumber() const { return crewNumber; }
+
+void Ship::setEnginePower(double eP) { enginePower = eP; }
+void Ship::setDisplacement(double d) { displacement = d; }
+void Ship::setShipName(std::string sN) { shipName = sN; }
+void Ship::setHomePort(std::string hP) { homePort = hP; }

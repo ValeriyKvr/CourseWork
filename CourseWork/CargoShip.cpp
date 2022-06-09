@@ -7,3 +7,4 @@ CargoShip::CargoShip(double eP, double d, std::string sN, std::string hP, int cN
 std::string CargoShip::infoShip() const {
 	return(Ship::infoShip() + "\nLoad capacity: " + std::to_string(loadCapacity) + " tons." + "\n");
 }
+void CargoShip::setLoadCap(double lC) { loadCapacity = lC; }

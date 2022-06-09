@@ -8,5 +8,10 @@ public:
 	int increaseBoats();
 	std::string infoShip() const override;
 	int getNumOfBoats() const;
+
+	void setNumOfPas(int nOF);
+	void setNumOfBoats(int nOB);
+	void setBoatsCap(int bC);
+
 };
 
