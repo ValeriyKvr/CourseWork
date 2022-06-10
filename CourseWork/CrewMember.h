@@ -2,8 +2,8 @@
 #include <string>
 
 enum class CrewMemberRank {
-	Master,
-	MasterAssistant,
+	Captain,
+	CaptainAssistant,
 	ChiefEngineer,
 	EngineerAssistant,
 	Sailor,
@@ -17,7 +17,7 @@ class CrewMember {
 	int crewMemberAge, workExperience;
 public:
 	CrewMember(std::string fn, CrewMemberRank r, int cMA, int wE);
-	void changeRank(CrewMemberRank r);
+
 	CrewMemberRank getRank() const;
 	std::string getFullname() const;
 	int getAge() const;

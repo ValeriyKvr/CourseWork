@@ -11,12 +11,15 @@ class Ship {
 public:
 	Ship(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> m);
 	virtual std::string infoShip() const;
-	bool isMasterPresent() const;
+	bool isCaptainPresent() const;
+	std::string infoMember() const;
+
 	double getEnginePower() const;
 	double getDisplacement() const;
 	std::string getShipName() const;
 	std::string getHomePort() const;
 	int getCrewNumber() const;
+
 	void setEnginePower(double eP);
 	void setDisplacement(double d);
 	void setShipName(std::string sN);

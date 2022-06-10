@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+void createCrewMember(std::vector<CrewMember>& crewMembers, int crewNumber);
+
 Ship createShip();
 PassengerShip createPassengerShip();
 CargoShip createCargoShip();

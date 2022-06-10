@@ -13,7 +13,7 @@ int main() {
 			std::cout << "Please, choose the number:" << std::endl;
 			std::cout << "1) Create ship." << std::endl;
 			std::cout << "2) Show ships." << std::endl;
-			std::cout << "3) Check the Master." << std::endl;
+			std::cout << "3) Check for the Captain." << std::endl;
 			std::cout << "4) Delete ship." << std::endl;
 			std::cout << "5) Check the number of boats on a passenger ship." << std::endl;
 			std::cout << "6) Modify ship." << std::endl;
@@ -62,10 +62,10 @@ int main() {
 /////////////////////////////////////////////////////////////////////////////////////////////
 				case 3: //Check Master;
 					if (ordinaryShip.size() == 0 and passengerShip.size() == 0 and cargoShip.size() == 0) std::cout <<
-						"No ships to check the Master." << std::endl;
+						"No ships to check the Captain." << std::endl;
 					else {
 						int typeOfShip;
-						std::cout << "Choose ship to check the Master." << std::endl;
+						std::cout << "Choose type of the ship to check the Captain." << std::endl;
 						std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
 						std::cin >> typeOfShip;
 						switch (typeOfShip) {//Choose number of ship to check Master;
@@ -75,16 +75,16 @@ int main() {
 								break;
 							}
 							else {
-								std::cout << "Please, enter the number of ordinary ship to check the Master." << std::endl;
+								std::cout << "Please, enter the number of ordinary ship to check the Captain." << std::endl;
 								int numShipToCheck;
 								std::cin >> numShipToCheck;
 								if (numShipToCheck - 1 <= ordinaryShip.size()) {
-									if (ordinaryShip[numShipToCheck - 1].isMasterPresent()) {
-										std::cout << "Master is present at ordinary ship." << std::endl;
+									if (ordinaryShip[numShipToCheck - 1].isCaptainPresent()) {
+										std::cout << "Captain is present at ordinary shipnumber " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									else {
-										std::cout << "Master is missing at ordinary ship number " << numShipToCheck << "." << std::endl;
+										std::cout << "Captain is missing at ordinary ship number " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									break;
@@ -100,22 +100,23 @@ int main() {
 								break;
 							}
 							else {
-								std::cout << "Please, enter the number of passenger ship to check the Master." << std::endl;
+								std::cout << "Please, enter the number of passenger ship to check the Captain." << std::endl;
 								int numShipToCheck;
 								std::cin >> numShipToCheck;
 								if (numShipToCheck - 1 <= ordinaryShip.size()) {
-									if (passengerShip[numShipToCheck - 1].isMasterPresent()) {
-										std::cout << "Master is present at passenger ship." << std::endl;
+									if (passengerShip[numShipToCheck - 1].isCaptainPresent()) {
+										std::cout << "Captain is present at passenger shipnumber " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									else {
-										std::cout << "Master is missing at passenger ship number " << numShipToCheck << "." << std::endl;
+										std::cout << "Captain is missing at passenger ship number " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									break;
 								}
 								else {
-									std::cout << "The passanger ship with number " << numShipToCheck << " wasn't created or deleted." << std::endl;
+									std::cout << "The passanger ship with number " << numShipToCheck << " wasn't created or deleted." 
+										<< std::endl;
 									break;
 								}
 							}
@@ -125,16 +126,16 @@ int main() {
 								break;
 							}
 							else {
-								std::cout << "Please, enter the number of cargo ship to check the Master." << std::endl;
+								std::cout << "Please, enter the number of cargo ship to check the Captain." << std::endl;
 								int numShipToCheck;
 								std::cin >> numShipToCheck;
 								if (numShipToCheck - 1 <= ordinaryShip.size()) {
-									if (cargoShip[numShipToCheck - 1].isMasterPresent()) {
-										std::cout << "Master is present at cargo ship." << std::endl;
+									if (cargoShip[numShipToCheck - 1].isCaptainPresent()) {
+										std::cout << "Captain is present at cargo shipnumber " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									else {
-										std::cout << "Master is missing at cargo ship number " << numShipToCheck << "." << std::endl;
+										std::cout << "Captain is missing at cargo ship number " << numShipToCheck << "." << std::endl;
 									}
 									break;
 								}
@@ -260,7 +261,7 @@ int main() {
 					int typeOfShipDel;
 					std::cin >> typeOfShipDel;
 					if (typeOfShipDel == 1 and ordinaryShip.size() != 0) {//Modify ordinary ship
-						std::cout << "Enter ship number: " << std::endl;
+						std::cout << "Enter ship number: ";
 						modShip(ordinaryShip);
 						break;
 					}
@@ -269,7 +270,7 @@ int main() {
 						break;
 					}
 					if (typeOfShipDel == 2 and passengerShip.size() != 0) {//Modify passenger ship
-						std::cout << "Enter passenger ship number: " << std::endl;
+						std::cout << "Enter passenger ship number: ";
 						modPassengerShip(passengerShip);
 						break;
 					}
@@ -278,7 +279,7 @@ int main() {
 						break;
 					}
 					if (typeOfShipDel == 3 and cargoShip.size() != 0) {//Modify cargo ship
-						std::cout << "Enter cargo ship number: " << std::endl;
+						std::cout << "Enter cargo ship number: ";
 						modCargoShip(cargoShip);
 						break;
 					}
