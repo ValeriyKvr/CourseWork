@@ -1,10 +1,10 @@
 #include "CargoShip.h"
 #include <stdexcept>
 
-CargoShip::CargoShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> m, double lC) : Ship(eP, d, sN, hP, cN, m) {
+CargoShip::CargoShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> m, double lC) : OrdinaryShip(eP, d, sN, hP, cN, m) {
 	loadCapacity = lC;
 }
 std::string CargoShip::infoShip() const {
-	return(Ship::infoShip() + "\nLoad capacity: " + std::to_string(loadCapacity) + " tons." + "\n");
+	return(OrdinaryShip::infoShip() + "\nLoad capacity: " + std::to_string(loadCapacity) + " tons." + "\n");
 }
-void CargoShip::setLoadCap(double lC) { loadCapacity = lC; }
+void CargoShip::setLoadCap(const double& lC) { loadCapacity = lC; }

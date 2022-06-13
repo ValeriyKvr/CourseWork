@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <string>
 
 enum class CrewMemberRank {
@@ -22,5 +23,7 @@ public:
 	std::string getFullname() const;
 	int getAge() const;
 	int getWorkExp() const;
+
+	void setRank(const CrewMemberRank& r);
 };
 

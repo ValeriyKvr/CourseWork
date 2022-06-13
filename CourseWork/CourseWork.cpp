@@ -3,7 +3,7 @@
 
 int main() {
 	try {
-		std::vector<Ship> ordinaryShip;
+		std::vector<OrdinaryShip> ordinaryShip;
 		std::vector<PassengerShip> passengerShip;
 		std::vector<CargoShip> cargoShip;
 		int menuButton = 1;
@@ -65,7 +65,7 @@ int main() {
 						"No ships to check the Captain." << std::endl;
 					else {
 						int typeOfShip;
-						std::cout << "Choose type of the ship to check the Captain." << std::endl;
+						std::cout << "Choose type of the ship to check the Captain: " << std::endl;
 						std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
 						std::cin >> typeOfShip;
 						switch (typeOfShip) {//Choose number of ship to check Master;
@@ -80,17 +80,17 @@ int main() {
 								std::cin >> numShipToCheck;
 								if (numShipToCheck - 1 <= ordinaryShip.size()) {
 									if (ordinaryShip[numShipToCheck - 1].isCaptainPresent()) {
-										std::cout << "Captain is present at ordinary shipnumber " << numShipToCheck << "." << std::endl;
+										std::cout << "\nCaptain is present at the ordinary ship number " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									else {
-										std::cout << "Captain is missing at ordinary ship number " << numShipToCheck << "." << std::endl;
+										std::cout << "\nCaptain is missing at the ordinary ship number " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									break;
 								}
 								else {
-									std::cout << "The ordinary ship with number " << numShipToCheck << " wasn't created or deleted." << std::endl;
+									std::cout << "The ordinary ship number " << numShipToCheck << " wasn't created or deleted." << std::endl;
 									break;
 								}
 							}
@@ -100,22 +100,22 @@ int main() {
 								break;
 							}
 							else {
-								std::cout << "Please, enter the number of passenger ship to check the Captain." << std::endl;
+								std::cout << "Please, enter the number of passenger ship to check the Captain: ";
 								int numShipToCheck;
 								std::cin >> numShipToCheck;
 								if (numShipToCheck - 1 <= ordinaryShip.size()) {
 									if (passengerShip[numShipToCheck - 1].isCaptainPresent()) {
-										std::cout << "Captain is present at passenger shipnumber " << numShipToCheck << "." << std::endl;
+										std::cout << "\nCaptain is present at the passenger ship number " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									else {
-										std::cout << "Captain is missing at passenger ship number " << numShipToCheck << "." << std::endl;
+										std::cout << "\nCaptain is missing at the passenger ship number " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									break;
 								}
 								else {
-									std::cout << "The passanger ship with number " << numShipToCheck << " wasn't created or deleted." 
+									std::cout << "The passanger ship number " << numShipToCheck << " wasn't created or deleted." 
 										<< std::endl;
 									break;
 								}
@@ -126,21 +126,21 @@ int main() {
 								break;
 							}
 							else {
-								std::cout << "Please, enter the number of cargo ship to check the Captain." << std::endl;
+								std::cout << "Please, enter the number of the cargo ship to check the Captain." << std::endl;
 								int numShipToCheck;
 								std::cin >> numShipToCheck;
 								if (numShipToCheck - 1 <= ordinaryShip.size()) {
 									if (cargoShip[numShipToCheck - 1].isCaptainPresent()) {
-										std::cout << "Captain is present at cargo shipnumber " << numShipToCheck << "." << std::endl;
+										std::cout << "\nCaptain is present at the cargo ship number " << numShipToCheck << "." << std::endl;
 										break;
 									}
 									else {
-										std::cout << "Captain is missing at cargo ship number " << numShipToCheck << "." << std::endl;
+										std::cout << "\nCaptain is missing at the cargo ship number " << numShipToCheck << "." << std::endl;
 									}
 									break;
 								}
 								else {
-									std::cout << "The cargo ship with number " << numShipToCheck << " wasn't created or deleted."
+									std::cout << "The cargo ship number " << numShipToCheck << " wasn't created or deleted."
 										<< std::endl;
 									break;
 								}
@@ -258,32 +258,36 @@ int main() {
 					}
 					std::cout << "What type of ship do you want to modify?" << std::endl;
 					std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
-					int typeOfShipDel;
-					std::cin >> typeOfShipDel;
-					if (typeOfShipDel == 1 and ordinaryShip.size() != 0) {//Modify ordinary ship
+					int typeOfShipMod;
+					std::cin >> typeOfShipMod;
+					if (typeOfShipMod != 1 and typeOfShipMod != 2 and typeOfShipMod != 3) {
+						std::cout << "You choose incorrect number." << std::endl;
+						break;
+					}
+					if (typeOfShipMod == 1 and ordinaryShip.size() != 0) {//Modify ordinary ship
 						std::cout << "Enter ship number: ";
 						modShip(ordinaryShip);
 						break;
 					}
-					if (ordinaryShip.size() == 0 and typeOfShipDel == 1) {
+					if (ordinaryShip.size() == 0 and typeOfShipMod == 1) {
 						std::cout << "No ordinary ships to modify." << std::endl;
 						break;
 					}
-					if (typeOfShipDel == 2 and passengerShip.size() != 0) {//Modify passenger ship
+					if (typeOfShipMod == 2 and passengerShip.size() != 0) {//Modify passenger ship
 						std::cout << "Enter passenger ship number: ";
 						modPassengerShip(passengerShip);
 						break;
 					}
-					if (passengerShip.size() == 0 and typeOfShipDel == 2) {
+					if (passengerShip.size() == 0 and typeOfShipMod == 2) {
 						std::cout << "No passenger ships to modify." << std::endl;
 						break;
 					}
-					if (typeOfShipDel == 3 and cargoShip.size() != 0) {//Modify cargo ship
+					if (typeOfShipMod == 3 and cargoShip.size() != 0) {//Modify cargo ship
 						std::cout << "Enter cargo ship number: ";
 						modCargoShip(cargoShip);
 						break;
 					}
-					if (cargoShip.size() == 0 and typeOfShipDel == 3) {
+					if (cargoShip.size() == 0 and typeOfShipMod == 3) {
 						std::cout << "No cargo ships to modify." << std::endl;
 						break;
 					}

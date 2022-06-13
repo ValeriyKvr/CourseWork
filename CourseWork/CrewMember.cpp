@@ -1,5 +1,6 @@
 #include "CrewMember.h"
 #include <stdexcept>
+#include <iostream>
 
 CrewMember::CrewMember(std::string fn, CrewMemberRank r, int cMA, int wE) {
 	if (workExperience < 0) throw std::invalid_argument("Work experience cannot be < 0");
@@ -10,3 +11,5 @@ CrewMemberRank CrewMember::getRank() const { return rank; }
 std::string CrewMember::getFullname() const { return fullname; }
 int CrewMember::getAge() const { return crewMemberAge; }
 int CrewMember::getWorkExp() const { return workExperience; }
+
+void CrewMember::setRank(const CrewMemberRank& r) { rank = r; }

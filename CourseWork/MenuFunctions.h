@@ -9,12 +9,12 @@
 
 void createCrewMember(std::vector<CrewMember>& crewMembers, int crewNumber);
 
-Ship createShip();
+OrdinaryShip createShip();
 PassengerShip createPassengerShip();
 CargoShip createCargoShip();
 
-void modShip(std::vector<Ship>& ship);
+void modShip(std::vector<OrdinaryShip>& ship);
 void modPassengerShip(std::vector<PassengerShip>& pasShip);
 void modCargoShip(std::vector<CargoShip>& cargoShip);
 
-void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* passengerShip, std::vector<CargoShip>* cargoShip);
+void printShip(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* passengerShip, std::vector<CargoShip>* cargoShip);

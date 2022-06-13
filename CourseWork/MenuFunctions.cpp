@@ -12,13 +12,13 @@ void createCrewMember(std::vector<CrewMember>& crewMembers, int crewNumber) {
 		std::cout << "Enter " << fullname << " age: ";
 		std::cin >> memberAge;
 		if (memberAge <= 0 or memberAge > 90) {
-			throw std::invalid_argument("Error. Incorrect input.");
+			throw std::invalid_argument("Error. Incorrect age.");
 		}
 		int workExp;
 		std::cout << "Enter " << fullname << " work experience: ";
 		std::cin >> workExp;
 		if (workExp < 0 or workExp > memberAge - 18) {
-			throw std::invalid_argument("Error. Incorrect input.");
+			throw std::invalid_argument("Error. Incorrect work experience.");
 		}
 		CrewMemberRank rank;
 		int rankNumber;
@@ -34,7 +34,7 @@ void createCrewMember(std::vector<CrewMember>& crewMembers, int crewNumber) {
 	}
 }
 
-Ship createShip() {
+OrdinaryShip createShip() {
 	double enginePower;
 	std::cout << "Enter engine power in kW: ";
 	std::cin >> enginePower;
@@ -63,7 +63,7 @@ Ship createShip() {
 	std::vector<CrewMember> crewMembers;
 	createCrewMember(crewMembers, crewNumber);
 	std::cout << "Ordinary ship was created. Thank you." << std::endl;
-	return Ship(enginePower, displacement, shipName, homePort, crewNumber, crewMembers);
+	return OrdinaryShip(enginePower, displacement, shipName, homePort, crewNumber, crewMembers);
 }
 
 PassengerShip createPassengerShip() {
@@ -152,16 +152,15 @@ CargoShip createCargoShip() {
 	return CargoShip(enginePower, displacement, shipName, homePort, crewNumber, crewMembers, loadCapacity);
 }
 
-void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* pasShip, std::vector<CargoShip>* cargoShip) {
+void printShip(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* pasShip, std::vector<CargoShip>* cargoShip) {
 	if (ship == 0 || !(*ship).size()) std::cout << "Ordinary ships are missing." << std::endl;
 	else {
 		int i = 0;
 		std::cout << "\tOrdinary ships: " << std::endl;
-		for (auto &c : *ship) {
+		for (auto c : *ship) {
 			std::cout << "Ordinary ship number: " << ++i << std::endl;
 			std::cout << "|||||||||||||||||||||||" << std::endl;
 			std::cout << c.infoShip() << c.infoMember() << std::endl;
-			std::cout << std::endl;
 		}
 	}
 	std::cout << "_________________________________________________________________" << std::endl;
@@ -169,11 +168,10 @@ void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* pasShip, std
 	else {
 		int i = 0;
 		std::cout << "\tPassenger ships: " << std::endl;
-		for (auto &c : *pasShip) {
+		for (auto c : *pasShip) {
 			std::cout << "Passenger ship number: " << ++i << std::endl;
 			std::cout << "||||||||||||||||||||||||" << std::endl;
 			std::cout << c.infoShip() << c.infoMember() << std::endl;
-			std::cout << std::endl;
 		}
 	}
 	std::cout << "_________________________________________________________________" << std::endl;
@@ -181,23 +179,22 @@ void printShip(std::vector<Ship>* ship, std::vector<PassengerShip>* pasShip, std
 	else {
 		int i = 0;
 		std::cout << "\tCargo ships: " << std::endl;
-		for (auto &c : *cargoShip) {
+		for (auto c : *cargoShip) {
 			std::cout << "Cargo ship number: " << ++i << std::endl;
 			std::cout << "||||||||||||||||||||" << std::endl;
 			std::cout << c.infoShip() << c.infoMember() << std::endl;
-			std::cout << std::endl;
 		}
 	}
 }
 
-void modShip(std::vector<Ship>& ship) {
+void modShip(std::vector<OrdinaryShip>& ship) {
 	int numShip;
 	std::cin >> numShip;
 	if (numShip > ship.size()) std::cout << "No ship with number " << numShip << "." << std::endl;
 	else {
 		std::cout << "Choose next action: " << std::endl;
 		std::cout << "1) Change ship's characteristics." << std::endl;
-		std::cout << "2) Reset to the menu." << std::endl;
+		std::cout << "2) Change rank." << std::endl;
 		int shipChar;
 		std::cin >> shipChar;
 		switch (shipChar) {
@@ -243,8 +240,33 @@ void modShip(std::vector<Ship>& ship) {
 			if (numToChange <= 0 or numToChange >= 5) {
 				std::cout << "Incorrect number." << std::endl;
 				break;
-			} 
-		case 2: 
+			}
+		case 2:
+			if (ship[numShip - 1].getCrewMembers().size() == 0) {
+				std::cout << "No members on the ship." << std::endl;
+				break;
+			}
+			std::cout << "Enter number of crew member: " << std::endl;
+			int num;
+			std::cin >> num;
+			if (num - 1 > ship[numShip - 1].getCrewMembers().size()) {
+				std::cout << "No crew member with number: " << num << std::endl;
+				break;
+			}
+			std::cout << "Rank to change: " << "\n" << "1) Captain;" << "\n" << "2) Captain Assistant;" << "\n" << "3) Chief Engineer;" <<
+				"\n" << "4) Engineer Assistant;" << "\n" << "5) Sailor;" << "\n" << "6) Cook; " << "\n" << "7) Doctor." << std::endl;
+			int rankNumber;
+			std::cin >> rankNumber;
+			if (rankNumber < 1 or rankNumber > 7) {
+				std::cout << "No such number, please, try again: ";
+				std::cin >> rankNumber;
+			}
+			CrewMemberRank rank = CrewMemberRank(rankNumber - 1);
+			if (rank == ship[numShip - 1].getCrewMembers()[num - 1].getRank()) {
+				std::cout << "This is the same rank." << std::endl;
+				break;
+			}
+			ship[numShip - 1].changeMemberRank(num, rank);
 			break;
 		}
 	}
@@ -257,7 +279,7 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 	else {
 		std::cout << "Choose next action: " << std::endl;
 		std::cout << "1) Change ship's characteristics." << std::endl;
-		std::cout << "2) Reset to the menu." << std::endl;
+		std::cout << "2) Change rank." << std::endl;
 		int shipChar;
 		std::cin >> shipChar;
 		switch (shipChar) {
@@ -330,6 +352,31 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 				break;
 			}
 		case 2:
+			if (pasShip[numShip - 1].getCrewMembers().size() == 0) {
+				std::cout << "No members on the ship." << std::endl;
+				break;
+			}
+			std::cout << "Enter number of crew member: " << std::endl;
+			int num;
+			std::cin >> num;
+			if (num - 1 > pasShip[numShip - 1].getCrewMembers().size()) {
+				std::cout << "No crew member with number: " << num << std::endl;
+				break;
+			}
+			std::cout << "Rank to change: " << "\n" << "1) Captain;" << "\n" << "2) Captain Assistant;" << "\n" << "3) Chief Engineer;" <<
+				"\n" << "4) Engineer Assistant;" << "\n" << "5) Sailor;" << "\n" << "6) Cook; " << "\n" << "7) Doctor." << std::endl;
+			int rankNumber;
+			std::cin >> rankNumber;
+			if (rankNumber < 1 or rankNumber > 7) {
+				std::cout << "No such number, please, try again: ";
+				std::cin >> rankNumber;
+			}
+			CrewMemberRank rank = CrewMemberRank(rankNumber - 1);
+			if (rank == pasShip[numShip - 1].getCrewMembers()[num - 1].getRank()) {
+				std::cout << "This is the same rank." << std::endl;
+				break;
+			}
+			pasShip[numShip - 1].changeMemberRank(num, rank);
 			break;
 		}
 	}
@@ -338,11 +385,13 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 void modCargoShip(std::vector<CargoShip>& cargoShip) {
 	int numShip;
 	std::cin >> numShip;
-	if (numShip > cargoShip.size()) std::cout << "No cargo ship with number " << numShip << "." << std::endl;
+	if (numShip > cargoShip.size()) {
+		std::cout << "No cargo ship with number " << numShip << "." << std::endl;
+	}
 	else {
 		std::cout << "Choose next action: " << std::endl;
 		std::cout << "1) Change ship's characteristics." << std::endl;
-		std::cout << "2) Reset to the menu." << std::endl;
+		std::cout << "2) Change rank." << std::endl;
 		int shipChar;
 		std::cin >> shipChar;
 		switch (shipChar) {
@@ -398,6 +447,31 @@ void modCargoShip(std::vector<CargoShip>& cargoShip) {
 				break;
 			}
 		case 2:
+			if (cargoShip[numShip - 1].getCrewMembers().size() == 0) {
+				std::cout << "No members on the ship." << std::endl;
+				break;
+			}
+			std::cout << "Enter number of crew member: " << std::endl;
+			int num;
+			std::cin >> num;
+			if (num - 1 > cargoShip[numShip - 1].getCrewMembers().size()) {
+				std::cout << "No crew member with number: " << num << std::endl;
+				break;
+			}
+			std::cout << "Rank to change: " << "\n" << "1) Captain;" << "\n" << "2) Captain Assistant;" << "\n" << "3) Chief Engineer;" <<
+				"\n" << "4) Engineer Assistant;" << "\n" << "5) Sailor;" << "\n" << "6) Cook; " << "\n" << "7) Doctor." << std::endl;
+			int rankNumber;
+			std::cin >> rankNumber;
+			if (rankNumber < 1 or rankNumber > 7) {
+				std::cout << "No such number, please, try again: ";
+				std::cin >> rankNumber;
+			}
+			CrewMemberRank rank = CrewMemberRank(rankNumber - 1);
+			if (rank == cargoShip[numShip - 1].getCrewMembers()[num - 1].getRank()) {
+				std::cout << "This is the same rank." << std::endl;
+				break;
+			}
+			cargoShip[numShip - 1].changeMemberRank(num, rank);
 			break;
 		}
 	}

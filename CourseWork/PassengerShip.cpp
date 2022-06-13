@@ -1,7 +1,7 @@
 #include "PassengerShip.h"
 #include <stdexcept>
 
-PassengerShip::PassengerShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> m, int nOP, int nOB, int bC)  : Ship(eP, d, sN, hP, cN, m) {
+PassengerShip::PassengerShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> m, int nOP, int nOB, int bC)  : OrdinaryShip(eP, d, sN, hP, cN, m) {
 	numberOfPassengers = nOP, numberOfBoats = nOB, boatCapacity = bC;
 }
 
@@ -21,12 +21,12 @@ int PassengerShip::increaseBoats() {
 }
 
 std::string PassengerShip::infoShip() const {
-	return (Ship::infoShip() + "\nNumber of passengers: " + std::to_string(numberOfPassengers) + '\n' + "Numbers of boats: " +
+	return (OrdinaryShip::infoShip() + "\nNumber of passengers: " + std::to_string(numberOfPassengers) + '\n' + "Numbers of boats: " +
 		std::to_string(numberOfBoats) + '\n' + "Boats capacity: " + std::to_string(boatCapacity));
 }
 
 int PassengerShip::getNumOfBoats() const { return numberOfBoats; }
 
-void PassengerShip::setNumOfPas(int nOF) { numberOfPassengers = nOF; }
-void PassengerShip::setNumOfBoats(int nOB) { numberOfBoats = nOB; }
-void PassengerShip::setBoatsCap(int bC) { boatCapacity = bC; }
+void PassengerShip::setNumOfPas(const int& nOF) { numberOfPassengers = nOF; }
+void PassengerShip::setNumOfBoats(const int& nOB) { numberOfBoats = nOB; }
+void PassengerShip::setBoatsCap(const int& bC) { boatCapacity = bC; }
