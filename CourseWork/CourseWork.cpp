@@ -67,7 +67,7 @@ int main () {
 						std::cout << "Choose type of the ship to check the Captain: " << std::endl;
 						std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
 						std::cin >> typeOfShip;
-						if (typeOfShip < 1 and typeOfShip > 3) {
+						if (typeOfShip < 1 or typeOfShip > 3) {
 							std::cout << "No such number to choose type of the ship." << std::endl;
 							break;
 						}

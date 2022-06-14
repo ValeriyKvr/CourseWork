@@ -207,6 +207,10 @@ void modShip(std::vector<OrdinaryShip>& ship) {
 				std::cout << "Please, enter new engine power in kW: ";
 				double enginePower;
 				std::cin >> enginePower;
+				if (enginePower <= 0) {
+					std::cout << "Incorrect engine power." << std::endl;
+					break;
+				}
 				std::cout << "Engine power of ordinary ship number " << numShip << " was changed to " << enginePower
 					<< std::endl;
 				ship[numShip - 1].setEnginePower(enginePower);
@@ -216,6 +220,10 @@ void modShip(std::vector<OrdinaryShip>& ship) {
 				std::cout << "Please, enter new displacement in tons: ";
 				double displacement;
 				std::cin >> displacement;
+				if (displacement <= 0) {
+					std::cout << "Incorrect displacement." << std::endl;
+					break;
+				}
 				std::cout << "Displacement of ordinary ship number " << numShip << " was changed to " << displacement
 					<< std::endl;
 				ship[numShip - 1].setDisplacement(displacement);
@@ -293,6 +301,10 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 				std::cout << "Please, enter new engine power in kW: ";
 				double enginePower;
 				std::cin >> enginePower;
+				if (enginePower <= 0) {
+					std::cout << "Incorrect engine power." << std::endl;
+					break;
+				}
 				std::cout << "Engine power of passenger ship number " << numShip << " was changed to " << enginePower
 					<< std::endl;
 				pasShip[numShip - 1].setEnginePower(enginePower);
@@ -302,6 +314,10 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 				std::cout << "Please, enter new displacement in tons: ";
 				double displacement;
 				std::cin >> displacement;
+				if (displacement <= 0) {
+					std::cout << "Incorrect displacement." << std::endl;
+					break;
+				}
 				std::cout << "Displacement of passenger ship number " << numShip << " was changed to " << displacement
 					<< std::endl;
 				pasShip[numShip - 1].setDisplacement(displacement);
@@ -327,6 +343,10 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 				std::cout << "Please, enter new number of passengers: ";
 				int numOfPas;
 				std::cin >> numOfPas;
+				if (numOfPas < 0) {
+					std::cout << "Incorrect number of passengers." << std::endl;
+					break;
+				}
 				std::cout << "Number of passengers was changed to " << numOfPas << std::endl;
 				pasShip[numShip - 1].setNumOfPas(numOfPas);
 				break;
@@ -335,6 +355,10 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 				std::cout << "Please, enter new number of boats: ";
 				int numOfBoats;
 				std::cin >> numOfBoats;
+				if (numOfBoats < 0) {
+					std::cout << "Incorrect number of boats." << std::endl;
+					break;
+				}
 				std::cout << "Number of boats was changed to " << numOfBoats << std::endl;
 				pasShip[numShip - 1].setNumOfBoats(numOfBoats);
 				break;
@@ -343,11 +367,15 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 				std::cout << "Please, enter new boats capacity: ";
 				int boatsCap;
 				std::cin >> boatsCap;
+				if (boatsCap <= 0) {
+					std::cout << "Incorrect boats capacity." << std::endl;
+					break;
+				}
 				std::cout << "Boats capacity was changed to " << boatsCap << std::endl;
 				pasShip[numShip - 1].setBoatsCap(boatsCap);
 				break;
 			}
-			if (numToChange <= 0 or numToChange >= 5) {
+			if (numToChange < 1  or numToChange > 7) {
 				std::cout << "Incorrect number." << std::endl;
 				break;
 			}
@@ -404,6 +432,10 @@ void modCargoShip(std::vector<CargoShip>& cargoShip) {
 				std::cout << "Please, enter new engine power in kW: ";
 				double enginePower;
 				std::cin >> enginePower;
+				if (enginePower <= 0) {
+					std::cout << "Incorrect engine power." << std::endl;
+					break;
+				}
 				std::cout << "Engine power of passenger ship number " << numShip << " was changed to " << enginePower
 					<< std::endl;
 				cargoShip[numShip - 1].setEnginePower(enginePower);
@@ -413,6 +445,10 @@ void modCargoShip(std::vector<CargoShip>& cargoShip) {
 				std::cout << "Please, enter new displacement in tons: ";
 				double displacement;
 				std::cin >> displacement;
+				if (displacement <= 0) {
+					std::cout << "Incorrect displacement." << std::endl;
+					break;
+				}
 				std::cout << "Displacement of passenger ship number " << numShip << " was changed to " << displacement
 					<< std::endl;
 				cargoShip[numShip - 1].setDisplacement(displacement);
@@ -438,6 +474,10 @@ void modCargoShip(std::vector<CargoShip>& cargoShip) {
 				std::cout << "Please, enter new load capacity: ";
 				double loadCap;
 				std::cin >> loadCap;
+				if (loadCap <= 0) {
+					std::cout << "Incorrect load capacity." << std::endl;
+					break;
+				}
 				std::cout << "Ship load capacity was changed to " << loadCap << std::endl;
 				cargoShip[numShip - 1].setLoadCap(loadCap);
 				break;
