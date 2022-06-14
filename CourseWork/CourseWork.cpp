@@ -1,7 +1,6 @@
 ﻿#include "MenuFunctions.h"
 
-
-int main() {
+int main () {
 	try {
 		std::vector<OrdinaryShip> ordinaryShip;
 		std::vector<PassengerShip> passengerShip;
@@ -55,12 +54,12 @@ int main() {
 						break;
 					}
 					else {
-						printShip(&ordinaryShip, &passengerShip, &cargoShip);
+						printShips(&ordinaryShip, &passengerShip, &cargoShip);
 						break;
 					}
 					break;
 /////////////////////////////////////////////////////////////////////////////////////////////
-				case 3: //Check Master;
+				case 3: //Check Captain;
 					if (ordinaryShip.size() == 0 and passengerShip.size() == 0 and cargoShip.size() == 0) std::cout <<
 						"No ships to check the Captain." << std::endl;
 					else {
@@ -68,7 +67,11 @@ int main() {
 						std::cout << "Choose type of the ship to check the Captain: " << std::endl;
 						std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
 						std::cin >> typeOfShip;
-						switch (typeOfShip) {//Choose number of ship to check Master;
+						if (typeOfShip < 1 and typeOfShip > 3) {
+							std::cout << "No such number to choose type of the ship." << std::endl;
+							break;
+						}
+						switch (typeOfShip) {//Choose number of ship to check Captain;
 						case 1:
 							if (ordinaryShip.size() == 0) {
 								std::cout << "The ordinary ship wasn't created or deleted." << std::endl;
@@ -222,14 +225,15 @@ int main() {
 					std::cout << "Please, enter the number of passenger ship to check number of boats." << std::endl;
 					int numCheckBoats;
 					std::cin >> numCheckBoats;
-					if (numCheckBoats - 1 <= passengerShip.size()) {
+					if (numCheckBoats <= passengerShip.size()) {
 						if (passengerShip[numCheckBoats - 1].isEnoughBoats()) {
-							std::cout << "Boats enough." << std::endl;
+							std::cout << "Enough boats." << std::endl;
 							break;
 						}
 						else {
 							std::cout << "Boats aren't enough at the passenger ship number " << numCheckBoats << "." << std::endl;
-							std::cout << "Please, choose the next action: \n" << "1) Increase number of boats.\n" << "2) Save the current amount." << std::endl;
+							std::cout << "Please, choose the next action: \n" << "1) Increase number of boats.\n" << 
+								"2) Save the current amount." << std::endl;
 							int numInc;
 							std::cin >> numInc;
 							if (numInc == 1) {
@@ -246,7 +250,7 @@ int main() {
 						break;
 					}
 					else {
-						std::cout << "Sorry, but you enter incorrect number." << std::endl;
+						std::cout << "Sorry, but passenger ship number " << numCheckBoats << " wasn't created or deleted." << std::endl;
 						break;
 					}
 					break;

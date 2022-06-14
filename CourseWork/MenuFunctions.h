@@ -2,7 +2,6 @@
 #include "OrdinaryShip.h"
 #include "PassengerShip.h"
 #include "CargoShip.h"
-#include "CrewMember.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -17,4 +16,4 @@ void modShip(std::vector<OrdinaryShip>& ship);
 void modPassengerShip(std::vector<PassengerShip>& pasShip);
 void modCargoShip(std::vector<CargoShip>& cargoShip);
 
-void printShip(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* passengerShip, std::vector<CargoShip>* cargoShip);
+void printShips(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* passengerShip, std::vector<CargoShip>* cargoShip);

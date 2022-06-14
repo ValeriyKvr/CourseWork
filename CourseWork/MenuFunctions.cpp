@@ -152,7 +152,7 @@ CargoShip createCargoShip() {
 	return CargoShip(enginePower, displacement, shipName, homePort, crewNumber, crewMembers, loadCapacity);
 }
 
-void printShip(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* pasShip, std::vector<CargoShip>* cargoShip) {
+void printShips(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* pasShip, std::vector<CargoShip>* cargoShip) {
 	if (ship == 0 || !(*ship).size()) std::cout << "Ordinary ships are missing." << std::endl;
 	else {
 		int i = 0;
