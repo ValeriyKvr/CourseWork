@@ -3,7 +3,7 @@
 #include "CargoShip.h"
 
 void createCrewMember(std::vector<CrewMember>& crewMembers, int crewNumber);
-OrdinaryShip createShip();
+OrdinaryShip createOrdinaryShip();
 PassengerShip createPassengerShip();
 CargoShip createCargoShip();
 void printShips(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* pasShip, std::vector<CargoShip>* cargoShip);
@@ -30,7 +30,7 @@ int main () {
 			std::cout << "7) Exit." << std::endl;
 			std::cout << "//////////////////////////////////////////////////" << std::endl;
 			std::cin >> menuButton;
-			if (menuButton <= 0 or menuButton >= 8) {
+			if (menuButton < 1 or menuButton > 7) {
 				std::cout << "Incorrect number. Try again." << std::endl;
 				menuButton = 1;
 			}
@@ -46,7 +46,7 @@ int main () {
 						std::cout << "No such number to choose type of the ship. Go to the menu and choose correct number." << std::endl;
 					}
 					if (typeOfShip == 1) {
-						ordinaryShip.push_back(createShip());
+						ordinaryShip.push_back(createOrdinaryShip());
 						break;
 					}
 					if (typeOfShip == 2) {
@@ -355,24 +355,22 @@ void createCrewMember(std::vector<CrewMember>& crewMembers, int crewNumber) {
 	}
 }
 
-OrdinaryShip createShip() {
-	double enginePower;
+OrdinaryShip createOrdinaryShip() {
+	double enginePower, displacement;
 	std::cout << "Enter engine power in kW: ";
 	std::cin >> enginePower;
 	if (enginePower <= 0) {
 		throw std::invalid_argument("\nError. Incorrect engine power.");
 	}
-	double displacement;
 	std::cout << "Enter displacement in tons: ";
 	std::cin >> displacement;
 	if (displacement <= 0) {
 		throw std::invalid_argument("\nError. Incorrect displacement.");
 	}
-	std::string shipName;
+	std::string shipName, homePort;
 	std::cout << "Enter ship name: ";
 	std::cin.ignore(100, '\n');
 	std::getline(std::cin, shipName);
-	std::string homePort;
 	std::cout << "Enter home port: ";
 	std::getline(std::cin, homePort);
 	int crewNumber;
@@ -386,25 +384,22 @@ OrdinaryShip createShip() {
 	std::cout << "Ordinary ship was created. Thank you." << std::endl;
 	return OrdinaryShip(enginePower, displacement, shipName, homePort, crewNumber, crewMembers);
 }
-
 PassengerShip createPassengerShip() {
-	double enginePower;
+	double enginePower, displacement;
 	std::cout << "Enter engine power in kW: ";
 	std::cin >> enginePower;
 	if (enginePower <= 0) {
 		throw std::invalid_argument("\nError. Incorrect engine power.");
 	}
-	double displacement;
 	std::cout << "Enter displacement in tons: ";
 	std::cin >> displacement;
 	if (displacement <= 0) {
 		throw std::invalid_argument("\nError. Incorrect displacement.");
 	}
-	std::string shipName;
+	std::string shipName, homePort;
 	std::cout << "Enter ship name: ";
 	std::cin.ignore(100, '\n');
 	std::getline(std::cin, shipName);
-	std::string homePort;
 	std::cout << "Enter home port: ";
 	std::getline(std::cin, homePort);
 	int numberOfPassengers, numberOfBoats, boatCapacity;
@@ -434,25 +429,22 @@ PassengerShip createPassengerShip() {
 	std::cout << "Passenger ship was created. Thank you." << std::endl;
 	return PassengerShip(enginePower, displacement, shipName, homePort, crewNumber, crewMembers, numberOfPassengers, numberOfBoats, boatCapacity);
 }
-
 CargoShip createCargoShip() {
-	double enginePower;
+	double enginePower, displacement, loadCapacity;
 	std::cout << "Enter engine power in kW: ";
 	std::cin >> enginePower;
 	if (enginePower <= 0) {
 		throw std::invalid_argument("\nError. Incorrect engine power.");
 	}
-	double displacement;
 	std::cout << "Enter displacement in tons: ";
 	std::cin >> displacement;
 	if (displacement <= 0) {
 		throw std::invalid_argument("\nError. Incorrect displacement.");
 	}
-	std::string shipName;
+	std::string shipName, homePort;
 	std::cout << "Enter ship name: ";
 	std::cin.ignore(100, '\n');
 	std::getline(std::cin, shipName);
-	std::string homePort;
 	std::cout << "Enter home port: ";
 	std::getline(std::cin, homePort);
 	int crewNumber;
@@ -461,7 +453,6 @@ CargoShip createCargoShip() {
 	if (crewNumber < 0 or crewNumber > 10) {
 		throw std::invalid_argument("\nError. Incorrect number of crew members.");
 	}
-	double loadCapacity;
 	std::cout << "Enter load capacity: ";
 	std::cin >> loadCapacity;
 	if (loadCapacity < 0) {
@@ -600,7 +591,6 @@ void modShip(std::vector<OrdinaryShip>& ship) {
 		}
 	}
 }
-
 void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 	int numShip;
 	std::cin >> numShip;
@@ -730,7 +720,6 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 		}
 	}
 }
-
 void modCargoShip(std::vector<CargoShip>& cargoShip) {
 	int numShip;
 	std::cin >> numShip;

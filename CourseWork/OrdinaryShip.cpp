@@ -22,29 +22,13 @@ std::string OrdinaryShip::infoMember() const {
 			+ std::to_string(crewMembers[i].getAge()) + " years." + "\n" + "Work experience: " + 
 			std::to_string(crewMembers[i].getWorkExp()) + " years." + "\n";
 		const CrewMemberRank rank = crewMembers[i].getRank();
-		switch (rank) {
-		case CrewMemberRank::Captain:
-			info += "Rank: Captain\n";
-			break;
-		case CrewMemberRank::CaptainAssistant:
-			info += "Rank: Captain Assistant\n";
-			break;
-		case CrewMemberRank::ChiefEngineer:
-			info += "Rank: Chief Engineer\n";
-			break;
-		case CrewMemberRank::EngineerAssistant:
-			info += "Rank: Engineer Assistant\n";
-			break;
-		case CrewMemberRank::Sailor:
-			info += "Rank: Sailor\n";
-			break;
-		case CrewMemberRank::Cook:
-			info += "Rank: Cook\n";
-			break;
-		case CrewMemberRank::Doctor:
-			info += "Rank: Doctor\n";
-			break;
-		}
+		if (rank == CrewMemberRank::Captain) info += "Rank: Captain\n"; 
+		if (rank == CrewMemberRank::CaptainAssistant) info += "Rank: Captain Assistant\n";
+		if (rank == CrewMemberRank::ChiefEngineer) info += "Rank: Chief Engineer\n";
+		if (rank == CrewMemberRank::EngineerAssistant) info += "Rank: Engineer Assistant\n";
+		if (rank == CrewMemberRank::Sailor) info += "Rank: Sailor\n";
+		if (rank == CrewMemberRank::Cook) info += "Rank: Cook\n";
+		if (rank == CrewMemberRank::Doctor) info += "Rank: Doctor\n";
 	}
 	return info;
 }
