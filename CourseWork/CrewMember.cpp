@@ -3,7 +3,6 @@
 #include <iostream>
 
 CrewMember::CrewMember(std::string fn, CrewMemberRank r, int cMA, int wE) {
-	if (workExperience < 0) throw std::invalid_argument("Work experience cannot be < 0");
 	fullname = fn, rank = r, crewMemberAge = cMA, workExperience = wE;
 }
 

@@ -1,5 +1,4 @@
 #include "PassengerShip.h"
-#include <stdexcept>
 
 PassengerShip::PassengerShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> m, int nOP, int nOB, int bC)  : OrdinaryShip(eP, d, sN, hP, cN, m) {
 	numberOfPassengers = nOP, numberOfBoats = nOB, boatCapacity = bC;

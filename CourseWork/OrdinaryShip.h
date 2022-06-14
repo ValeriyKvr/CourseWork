@@ -10,11 +10,10 @@ class OrdinaryShip {
 	std::vector<CrewMember> crewMembers;
 public:
 	OrdinaryShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> cM);
-	virtual ~OrdinaryShip() = default;
 	virtual std::string infoShip() const;
 	bool isCaptainPresent() const;
 	void changeMemberRank(int memberNum, CrewMemberRank newRank);
-	std::string infoMember();
+	std::string infoMember() const;
 
 	double getEnginePower() const;
 	double getDisplacement() const;

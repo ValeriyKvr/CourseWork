@@ -13,7 +13,7 @@ bool OrdinaryShip::isCaptainPresent() const {
 	return false;
 }
 
-std::string OrdinaryShip::infoMember() {
+std::string OrdinaryShip::infoMember() const {
 	std::string info;
 	info = "\nNumber of crew members: " + std::to_string(crewNumber) + "\n";
 	std::cout << std::endl;

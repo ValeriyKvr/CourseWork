@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <stdexcept>
+#include <iostream>
 
 enum class CrewMemberRank {
 	Captain,

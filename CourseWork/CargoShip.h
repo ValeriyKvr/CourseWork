@@ -1,5 +1,6 @@
 #pragma once
 #include "OrdinaryShip.h"
+
 class CargoShip : public OrdinaryShip {
 	double loadCapacity;
 public:
