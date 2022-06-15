@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
-OrdinaryShip::OrdinaryShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> cM) {
+OrdinaryShip::OrdinaryShip(double& eP, double& d, std::string& sN, std::string& hP, int& cN, std::vector<CrewMember>& cM) {
 	enginePower = eP, displacement = d, shipName = sN, homePort = hP, crewNumber = cN, crewMembers = cM;
 }
 

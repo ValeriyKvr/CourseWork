@@ -560,7 +560,8 @@ void modOrdinaryShip(std::vector<OrdinaryShip>& ship) {
 			if (numToChange == 3) {
 				std::cout << "Please, enter new ship name: ";
 				std::string shipName;
-				std::cin >> shipName;
+				std::cin.ignore();
+				std::getline(std::cin, shipName);
 				std::cout << "Ship name was changed to " << shipName << std::endl;
 				ship[numShip - 1].setShipName(shipName);
 				break;
@@ -568,7 +569,8 @@ void modOrdinaryShip(std::vector<OrdinaryShip>& ship) {
 			if (numToChange == 4) {
 				std::cout << "Please, enter new home port: ";
 				std::string homePort;
-				std::cin >> homePort;
+				std::cin.ignore();
+				std::getline(std::cin, homePort);
 				std::cout << "Ship home port was changed to " << homePort << std::endl;
 				ship[numShip - 1].setHomePort(homePort);
 				break;
@@ -653,7 +655,8 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 			if (numToChange == 3) {
 				std::cout << "Please, enter new ship name: ";
 				std::string shipName;
-				std::cin >> shipName;
+				std::cin.ignore();
+				std::getline(std::cin, shipName);
 				std::cout << "Ship name was changed to " << shipName << std::endl;
 				pasShip[numShip - 1].setShipName(shipName);
 				break;
@@ -661,7 +664,8 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 			if (numToChange == 4) {
 				std::cout << "Please, enter new home port: ";
 				std::string homePort;
-				std::cin >> homePort;
+				std::cin.ignore();
+				std::getline(std::cin, homePort);
 				std::cout << "Ship home port was changed to " << homePort << std::endl;
 				pasShip[numShip - 1].setHomePort(homePort);
 				break;
@@ -783,7 +787,8 @@ void modCargoShip(std::vector<CargoShip>& cargoShip) {
 			if (numToChange == 3) {
 				std::cout << "Please, enter new ship name: ";
 				std::string shipName;
-				std::cin >> shipName;
+				std::cin.ignore();
+				std::getline(std::cin, shipName);
 				std::cout << "Ship name was changed to " << shipName << std::endl;
 				cargoShip[numShip - 1].setShipName(shipName);
 				break;
@@ -791,7 +796,8 @@ void modCargoShip(std::vector<CargoShip>& cargoShip) {
 			if (numToChange == 4) {
 				std::cout << "Please, enter new home port: ";
 				std::string homePort;
-				std::cin >> homePort;
+				std::cin.ignore();
+				std::getline(std::cin, homePort);
 				std::cout << "Ship home port was changed to " << homePort << std::endl;
 				cargoShip[numShip - 1].setHomePort(homePort);
 				break;

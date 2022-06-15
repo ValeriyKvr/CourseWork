@@ -1,6 +1,6 @@
 #include "PassengerShip.h"
 
-PassengerShip::PassengerShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> m, int nOP, int nOB, int bC)  : OrdinaryShip(eP, d, sN, hP, cN, m) {
+PassengerShip::PassengerShip(double& eP, double& d, std::string& sN, std::string& hP, int& cN, std::vector<CrewMember>& cM, int& nOP, int& nOB, int& bC)  : OrdinaryShip(eP, d, sN, hP, cN, cM) {
 	numberOfPassengers = nOP, numberOfBoats = nOB, boatCapacity = bC;
 }
 

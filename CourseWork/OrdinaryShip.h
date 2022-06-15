@@ -9,7 +9,7 @@ class OrdinaryShip {
 	int crewNumber;
 	std::vector<CrewMember> crewMembers;
 public:
-	OrdinaryShip(double eP, double d, std::string sN, std::string hP, int cN, std::vector<CrewMember> cM);
+	OrdinaryShip(double& eP, double& d, std::string& sN, std::string& hP, int& cN, std::vector<CrewMember>& cM);
 	virtual std::string infoShip() const;
 	bool isCaptainPresent() const;
 	void changeMemberRank(int memberNum, CrewMemberRank newRank);
