@@ -7,11 +7,11 @@ OrdinaryShip createOrdinaryShip();
 PassengerShip createPassengerShip();
 CargoShip createCargoShip();
 void printShips(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* pasShip, std::vector<CargoShip>* cargoShip);
-void modShip(std::vector<OrdinaryShip>& ship);
+void modOrdinaryShip(std::vector<OrdinaryShip>& ship);
 void modPassengerShip(std::vector<PassengerShip>& pasShip);
 void modCargoShip(std::vector<CargoShip>& cargoShip);
 
-int main () {
+int main() {
 	try {
 		std::vector<OrdinaryShip> ordinaryShip;
 		std::vector<PassengerShip> passengerShip;
@@ -92,6 +92,10 @@ int main () {
 								std::cout << "Please, enter the number of ordinary ship to check the Captain." << std::endl;
 								int numShipToCheck;
 								std::cin >> numShipToCheck;
+								if (numShipToCheck - 1 > ordinaryShip.size()) {
+									std::cout << "No such ordinary ship." << std::endl;
+									break;
+								}
 								if (numShipToCheck - 1 <= ordinaryShip.size()) {
 									if (ordinaryShip[numShipToCheck - 1].isCaptainPresent()) {
 										std::cout << "\nCaptain is present at the ordinary ship number " << numShipToCheck << "." << std::endl;
@@ -117,7 +121,11 @@ int main () {
 								std::cout << "Please, enter the number of passenger ship to check the Captain: ";
 								int numShipToCheck;
 								std::cin >> numShipToCheck;
-								if (numShipToCheck - 1 <= ordinaryShip.size()) {
+								if(numShipToCheck - 1 > passengerShip.size()) {
+									std::cout << "No such passenger ship." << std::endl;
+									break;
+								}
+								if (numShipToCheck - 1 <= passengerShip.size()) {
 									if (passengerShip[numShipToCheck - 1].isCaptainPresent()) {
 										std::cout << "\nCaptain is present at the passenger ship number " << numShipToCheck << "." << std::endl;
 										break;
@@ -143,7 +151,11 @@ int main () {
 								std::cout << "Please, enter the number of the cargo ship to check the Captain." << std::endl;
 								int numShipToCheck;
 								std::cin >> numShipToCheck;
-								if (numShipToCheck - 1 <= ordinaryShip.size()) {
+								if (numShipToCheck - 1 > cargoShip.size()) {
+									std::cout << "No such cargo ship." << std::endl;
+									break;
+								}
+								if (numShipToCheck - 1 <= cargoShip.size()) {
 									if (cargoShip[numShipToCheck - 1].isCaptainPresent()) {
 										std::cout << "\nCaptain is present at the cargo ship number " << numShipToCheck << "." << std::endl;
 										break;
@@ -172,11 +184,15 @@ int main () {
 					std::cout << "1) Ordinary ship." << "\n" << "2) Passenger ship." << "\n" << "3) Cargo ship." << std::endl;
 					int typeOfShipToDel;
 					std::cin >> typeOfShipToDel;
+					if (typeOfShipToDel < 1 or typeOfShipToDel > 3) {
+						std::cout << "No such number." << std::endl;
+						break;
+					}
 					if (typeOfShipToDel == 1 and ordinaryShip.size() != 0) {
 						std::cout << "Please, enter number of the ordinary ship, which you want to delete: " << std::endl;
 						int delShipNum;
 						std::cin >> delShipNum;
-						if (delShipNum > ordinaryShip.size()) {
+						if (delShipNum - 1 > ordinaryShip.size()) {
 							std::cout << "Incorrect number." << std::endl;
 							break;
 						}
@@ -190,7 +206,7 @@ int main () {
 						std::cout << "Please, enter number of the passenger ship, which you want to delete: " << std::endl;
 						int delShipNum;
 						std::cin >> delShipNum;
-						if (delShipNum > passengerShip.size()) {
+						if (delShipNum - 1 > passengerShip.size()) {
 							std::cout << "Incorrect number." << std::endl;
 							break;
 						}
@@ -204,7 +220,7 @@ int main () {
 						std::cout << "Please, enter number of the cargo ship, which you want to delete: " << std::endl;
 						int delShipNum;
 						std::cin >> delShipNum;
-						if (delShipNum > cargoShip.size()) {
+						if (delShipNum - 1 > cargoShip.size()) {
 							std::cout << "Incorrect number." << std::endl;
 							break;
 						}
@@ -281,7 +297,7 @@ int main () {
 					}
 					if (typeOfShipMod == 1 and ordinaryShip.size() != 0) {//Modify ordinary ship
 						std::cout << "Enter ship number: ";
-						modShip(ordinaryShip);
+						modOrdinaryShip(ordinaryShip);
 						break;
 					}
 					if (ordinaryShip.size() == 0 and typeOfShipMod == 1) {
@@ -499,7 +515,7 @@ void printShips(std::vector<OrdinaryShip>* ship, std::vector<PassengerShip>* pas
 	}
 }
 
-void modShip(std::vector<OrdinaryShip>& ship) {
+void modOrdinaryShip(std::vector<OrdinaryShip>& ship) {
 	int numShip;
 	std::cin >> numShip;
 	if (numShip > ship.size()) std::cout << "No ship with number " << numShip << "." << std::endl;
@@ -570,7 +586,7 @@ void modShip(std::vector<OrdinaryShip>& ship) {
 			int num;
 			std::cin >> num;
 			if (num - 1 > ship[numShip - 1].getCrewMembers().size()) {
-				std::cout << "No crew member with number: " << num << std::endl;
+				std::cout << "No crew member number: " << num << std::endl;
 				break;
 			}
 			std::cout << "Rank to change: " << "\n" << "1) Captain;" << "\n" << "2) Captain Assistant;" << "\n" << "3) Chief Engineer;" <<
@@ -699,7 +715,7 @@ void modPassengerShip(std::vector<PassengerShip>& pasShip) {
 			int num;
 			std::cin >> num;
 			if (num - 1 > pasShip[numShip - 1].getCrewMembers().size()) {
-				std::cout << "No crew member with number: " << num << std::endl;
+				std::cout << "No crew member number: " << num << std::endl;
 				break;
 			}
 			std::cout << "Rank to change: " << "\n" << "1) Captain;" << "\n" << "2) Captain Assistant;" << "\n" << "3) Chief Engineer;" <<
@@ -805,7 +821,7 @@ void modCargoShip(std::vector<CargoShip>& cargoShip) {
 			int num;
 			std::cin >> num;
 			if (num - 1 > cargoShip[numShip - 1].getCrewMembers().size()) {
-				std::cout << "No crew member with number: " << num << std::endl;
+				std::cout << "No crew member number: " << num << std::endl;
 				break;
 			}
 			std::cout << "Rank to change: " << "\n" << "1) Captain;" << "\n" << "2) Captain Assistant;" << "\n" << "3) Chief Engineer;" <<

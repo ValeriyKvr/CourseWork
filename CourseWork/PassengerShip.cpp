@@ -5,7 +5,7 @@ PassengerShip::PassengerShip(double eP, double d, std::string sN, std::string hP
 }
 
 bool PassengerShip::isEnoughBoats() const {
-	if ((getCrewNumber() + numberOfPassengers) >= numberOfBoats * boatCapacity) return false;
+	if ((getCrewNumber() + numberOfPassengers) > numberOfBoats * boatCapacity) return false;
 	return true;
 }
 
