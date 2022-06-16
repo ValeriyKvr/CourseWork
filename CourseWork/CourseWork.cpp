@@ -339,12 +339,10 @@ int main() {
 
 void createCrewMember(std::vector<CrewMember>& crewMembers, int crewNumber) {
 	for (int i = 0; i < crewNumber; i++) {
-		std::string name, surname, fullname;
-		std::cout << "Enter name of crew member #" + std::to_string(i + 1) + ": ";
-		std::cin >> name;
-		std::cout << "Enter surname of crew member #" + std::to_string(i + 1) + ": ";
-		std::cin >> surname;
-		fullname = name + " " + surname;
+		std::string fullname;
+		std::cout << "Enter fullname of crew member #" + std::to_string(i + 1) + ": ";
+		std::cin.ignore();
+		std::getline(std::cin, fullname);
 		int memberAge;
 		std::cout << "Enter " << fullname << " age: ";
 		std::cin >> memberAge;
